@@ -1,0 +1,169 @@
+id	repository	owner	team	parent	parent_desc	clone_url	lisc
+481	mulitanno-erc	raetschlab	raetschlab	Tex2016	Tex 2016	git://git.ratschlab.org/tex2016/mulitanno-erc.git	Academic Free License v3.0
+483	talks2016	raetschlab	raetschlab	Tex2016	Tex 2016	git://git.ratschlab.org/tex2016/talks2016.git	Academic Free License v3.0
+486	iclr_2016_opbn_paper	raetschlab	raetschlab	Tex2016	Tex 2016	git://git.ratschlab.org/tex2016/iclr_2016_opbn_paper.git	Academic Free License v3.0
+489	qrisp	raetschlab	raetschlab	Tex2016	Tex 2016	git://git.ratschlab.org/tex2016/qrisp.git	Academic Free License v3.0
+435	logos	raetschlab	raetschlab	Tex Resources	This directory should contain repositories that collect tex resources such as logos, poster templates, talk templates, ...	git://git.ratschlab.org/tex-resources/logos.git	Academic Free License v3.0
+430	arabidopsis_klaus	raetschlab	raetschlab	Projects2015	Should contain all project repositories of 2015	git://git.ratschlab.org/projects2015/arabidopsis_klaus.git	Academic Free License v3.0
+431	clonalreconstruction	raetschlab	raetschlab	Projects2015	Should contain all project repositories of 2015	git://git.ratschlab.org/projects2015/clonalreconstruction.git	Academic Free License v3.0
+441	cancerimages	raetschlab	raetschlab	Projects2015	Should contain all project repositories of 2015	git://git.ratschlab.org/projects2015/cancerimages.git	Academic Free License v3.0
+444	genetic-associations-psb-paper	raetschlab	raetschlab	Projects2015	Should contain all project repositories of 2015	git://git.ratschlab.org/projects2015/genetic-associations-psb-paper.git	Academic Free License v3.0
+449	fireworks	raetschlab	raetschlab	Projects2015	Should contain all project repositories of 2015	git://git.ratschlab.org/projects2015/fireworks.git	Academic Free License v3.0
+450	cmo	raetschlab	raetschlab	Projects2015	Should contain all project repositories of 2015	git://git.ratschlab.org/projects2015/cmo.git	Academic Free License v3.0
+451	facets	raetschlab	raetschlab	Projects2015	Should contain all project repositories of 2015	git://git.ratschlab.org/projects2015/facets.git	Academic Free License v3.0
+452	miranda	raetschlab	raetschlab	Projects2015	Should contain all project repositories of 2015	git://git.ratschlab.org/projects2015/miranda.git	Academic Free License v3.0
+453	vcf2maf	raetschlab	raetschlab	Projects2015	Should contain all project repositories of 2015	git://git.ratschlab.org/projects2015/vcf2maf.git	Academic Free License v3.0
+454	vcf2tsv	raetschlab	raetschlab	Projects2015	Should contain all project repositories of 2015	git://git.ratschlab.org/projects2015/vcf2tsv.git	Academic Free License v3.0
+455	vcf_accuracy	raetschlab	raetschlab	Projects2015	Should contain all project repositories of 2015	git://git.ratschlab.org/projects2015/vcf_accuracy.git	Academic Free License v3.0
+459	translation_boundaries_prediction	raetschlab	raetschlab	Projects2015	Should contain all project repositories of 2015	git://git.ratschlab.org/projects2015/translation_boundaries_prediction.git	Academic Free License v3.0
+460	uvm_raj	raetschlab	raetschlab	Projects2015	Should contain all project repositories of 2015	git://git.ratschlab.org/projects2015/uvm_raj.git	Academic Free License v3.0
+461	guido_projects_nrd44	raetschlab	raetschlab	Projects2015	Should contain all project repositories of 2015	git://git.ratschlab.org/projects2015/guido_projects_nrd44.git	Academic Free License v3.0
+462	rnaseq_library_r	raetschlab	raetschlab	Projects2015	Should contain all project repositories of 2015	git://git.ratschlab.org/projects2015/rnaseq_library_r.git	Academic Free License v3.0
+463	a_thal_markus	raetschlab	raetschlab	Projects2015	Should contain all project repositories of 2015	git://git.ratschlab.org/projects2015/a_thal_markus.git	Academic Free License v3.0
+464	ribodiff_extensions	raetschlab	raetschlab	Projects2015	Should contain all project repositories of 2015	git://git.ratschlab.org/projects2015/ribodiff_extensions.git	Academic Free License v3.0
+465	raj_norway_eye	raetschlab	raetschlab	Projects2015	Should contain all project repositories of 2015	git://git.ratschlab.org/projects2015/raj_norway_eye.git	Academic Free License v3.0
+470	arts2_compbio	raetschlab	raetschlab	Projects2015	Should contain all project repositories of 2015	git://git.ratschlab.org/projects2015/arts2_compbio.git	Academic Free License v3.0
+472	sync	raetschlab	raetschlab	Projects2015	Should contain all project repositories of 2015	git://git.ratschlab.org/projects2015/sync.git	Academic Free License v3.0
+474	opbn	raetschlab	raetschlab	Projects2015	Should contain all project repositories of 2015	git://git.ratschlab.org/projects2015/opbn.git	Academic Free License v3.0
+427	talks	raetschlab	raetschlab	Tex2015	All the many papers that we write in 2015.	git://git.ratschlab.org/tex2015/talks.git	Academic Free License v3.0
+428	ribodiff	raetschlab	raetschlab	Tex2015	All the many papers that we write in 2015.	git://git.ratschlab.org/tex2015/ribodiff.git	Academic Free License v3.0
+439	sentencecluster	raetschlab	raetschlab	Tex2015	All the many papers that we write in 2015.	git://git.ratschlab.org/tex2015/sentencecluster.git	Academic Free License v3.0
+440	zurich	raetschlab	raetschlab	Tex2015	All the many papers that we write in 2015.	git://git.ratschlab.org/tex2015/zurich.git	Academic Free License v3.0
+447	deep_bayesian_medical	raetschlab	raetschlab	Tex2015	All the many papers that we write in 2015.	git://git.ratschlab.org/tex2015/deep_bayesian_medical.git	Academic Free License v3.0
+458	wordreps	raetschlab	raetschlab	Tex2015	All the many papers that we write in 2015.	git://git.ratschlab.org/tex2015/wordreps.git	Academic Free License v3.0
+471	mtmkl_jmlr	raetschlab	raetschlab	Tex2015	All the many papers that we write in 2015.	git://git.ratschlab.org/tex2015/mtmkl_jmlr.git	Academic Free License v3.0
+384	ribosomefootprinting	raetschlab	raetschlab	Projects2014	These are the 2014 projects.	git://git.ratschlab.org/projects2014/ribosomefootprinting.git	Academic Free License v3.0
+387	sdiff	raetschlab	raetschlab	Projects2014	These are the 2014 projects.	git://git.ratschlab.org/projects2014/sdiff.git	Academic Free License v3.0
+388	epican	raetschlab	raetschlab	Projects2014	These are the 2014 projects.	git://git.ratschlab.org/projects2014/epican.git	Academic Free License v3.0
+389	beene-shared-storage-scripts	raetschlab	raetschlab	Projects2014	These are the 2014 projects.	git://git.ratschlab.org/projects2014/beene-shared-storage-scripts.git	Academic Free License v3.0
+390	clinicaltexts	raetschlab	raetschlab	Projects2014	These are the 2014 projects.	git://git.ratschlab.org/projects2014/clinicaltexts.git	Academic Free License v3.0
+391	timeline	raetschlab	raetschlab	Projects2014	These are the 2014 projects.	git://git.ratschlab.org/projects2014/timeline.git	Academic Free License v3.0
+392	accounting_overview	raetschlab	raetschlab	Projects2014	These are the 2014 projects.	git://git.ratschlab.org/projects2014/accounting_overview.git	Academic Free License v3.0
+393	a_thaliana_markus	raetschlab	raetschlab	Projects2014	These are the 2014 projects.	git://git.ratschlab.org/projects2014/a_thaliana_markus.git	Academic Free License v3.0
+396	wendel_harringtonine	raetschlab	raetschlab	Projects2014	These are the 2014 projects.	git://git.ratschlab.org/projects2014/wendel_harringtonine.git	Academic Free License v3.0
+398	patient_representation	raetschlab	raetschlab	Projects2014	These are the 2014 projects.	git://git.ratschlab.org/projects2014/patient_representation.git	Academic Free License v3.0
+400	comppath-mevlana	raetschlab	raetschlab	Projects2014	These are the 2014 projects.	git://git.ratschlab.org/projects2014/comppath-mevlana.git	Academic Free License v3.0
+405	cluster-migration-tools	raetschlab	raetschlab	Projects2014	These are the 2014 projects.	git://git.ratschlab.org/projects2014/cluster-migration-tools.git	Academic Free License v3.0
+406	wordreps	raetschlab	raetschlab	Projects2014	These are the 2014 projects.	git://git.ratschlab.org/projects2014/wordreps.git	Academic Free License v3.0
+409	prad	raetschlab	raetschlab	Projects2014	These are the 2014 projects.	git://git.ratschlab.org/projects2014/prad.git	Academic Free License v3.0
+410	skcm_qtl	raetschlab	raetschlab	Projects2014	These are the 2014 projects.	git://git.ratschlab.org/projects2014/skcm_qtl.git	Academic Free License v3.0
+411	ivashkiv_footprint	raetschlab	raetschlab	Projects2014	These are the 2014 projects.	git://git.ratschlab.org/projects2014/ivashkiv_footprint.git	Academic Free License v3.0
+412	ivashkiv_chiprna	raetschlab	raetschlab	Projects2014	These are the 2014 projects.	git://git.ratschlab.org/projects2014/ivashkiv_chiprna.git	Academic Free License v3.0
+415	ucs_qtl	raetschlab	raetschlab	Projects2014	These are the 2014 projects.	git://git.ratschlab.org/projects2014/ucs_qtl.git	Academic Free License v3.0
+417	similaritysearch	raetschlab	raetschlab	Projects2014	These are the 2014 projects.	git://git.ratschlab.org/projects2014/similaritysearch.git	Academic Free License v3.0
+418	timelinebrowser	raetschlab	raetschlab	Projects2014	These are the 2014 projects.	git://git.ratschlab.org/projects2014/timelinebrowser.git	Academic Free License v3.0
+419	wendel_pancreatic_cancer	raetschlab	raetschlab	Projects2014	These are the 2014 projects.	git://git.ratschlab.org/projects2014/wendel_pancreatic_cancer.git	Academic Free License v3.0
+424	icgc	raetschlab	raetschlab	Projects2014	These are the 2014 projects.	git://git.ratschlab.org/projects2014/icgc.git	Academic Free License v3.0
+425	metagenome	raetschlab	raetschlab	Projects2014	These are the 2014 projects.	git://git.ratschlab.org/projects2014/metagenome.git	Academic Free License v3.0
+436	pancan_ewas	raetschlab	raetschlab	Projects2014	These are the 2014 projects.	git://git.ratschlab.org/projects2014/pancan_ewas.git	Academic Free License v3.0
+466	castori	raetschlab	raetschlab	Projects2014	These are the 2014 projects.	git://git.ratschlab.org/projects2014/castori.git	Academic Free License v3.0
+467	grant_lowe	raetschlab	raetschlab	Projects2014	These are the 2014 projects.	git://git.ratschlab.org/projects2014/grant_lowe.git	Academic Free License v3.0
+468	truncations	raetschlab	raetschlab	Projects2014	These are the 2014 projects.	git://git.ratschlab.org/projects2014/truncations.git	Academic Free License v3.0
+399	crosbiecs-clinicaltexts	crosbiec	raetschlab	Projects2014	These are the 2014 projects.	git://git.ratschlab.org/~crosbiec/projects2014/crosbiecs-clinicaltexts.git	Academic Free License v3.0
+478	gideonites-metagenome	gideonite	raetschlab	Projects2014	These are the 2014 projects.	git://git.ratschlab.org/~gideonite/projects2014/gideonites-metagenome.git	Academic Free License v3.0
+482	akahless-metagenome	akahles	raetschlab	Projects2014	These are the 2014 projects.	git://git.ratschlab.org/~akahles/projects2014/akahless-metagenome.git	Academic Free License v3.0
+380	200g-methylation	raetschlab	raetschlab	Tex2014	All the many papers that we write in 2014.	git://git.ratschlab.org/tex2014/200g-methylation.git	Academic Free License v3.0
+381	talks	raetschlab	raetschlab	Tex2014	All the many papers that we write in 2014.	git://git.ratschlab.org/tex2014/talks.git	Academic Free License v3.0
+382	spladder	raetschlab	raetschlab	Tex2014	All the many papers that we write in 2014.	git://git.ratschlab.org/tex2014/spladder.git	Academic Free License v3.0
+385	homopbwt	raetschlab	raetschlab	Tex2014	All the many papers that we write in 2014.	git://git.ratschlab.org/tex2014/homopbwt.git	Academic Free License v3.0
+402	tetiwd	raetschlab	raetschlab	Tex2014	All the many papers that we write in 2014.	git://git.ratschlab.org/tex2014/tetiwd.git	Academic Free License v3.0
+414	comppath-notes	raetschlab	raetschlab	Tex2014	All the many papers that we write in 2014.	git://git.ratschlab.org/tex2014/comppath-notes.git	Academic Free License v3.0
+420	mtl-arts2	raetschlab	raetschlab	Tex2014	All the many papers that we write in 2014.	git://git.ratschlab.org/tex2014/mtl-arts2.git	Academic Free License v3.0
+421	clonalreconstruction	raetschlab	raetschlab	Tex2014	All the many papers that we write in 2014.	git://git.ratschlab.org/tex2014/clonalreconstruction.git	Academic Free License v3.0
+422	cl_association	raetschlab	raetschlab	Tex2014	All the many papers that we write in 2014.	git://git.ratschlab.org/tex2014/cl_association.git	Academic Free License v3.0
+423	amitdeshwars-clonalreconstruction	amitdeshwar	raetschlab	Tex2014	All the many papers that we write in 2014.	git://git.ratschlab.org/~amitdeshwar/tex2014/amitdeshwars-clonalreconstruction.git	Academic Free License v3.0
+308	palmapper	raetschlab	raetschlab	Tex2013	This contains the 2013 papers sources	git://git.ratschlab.org/tex2013/palmapper.git	Academic Free License v3.0
+310	talks	raetschlab	raetschlab	Tex2013	This contains the 2013 papers sources	git://git.ratschlab.org/tex2013/talks.git	Academic Free License v3.0
+311	vapnik_festschrift	raetschlab	raetschlab	Tex2013	This contains the 2013 papers sources	git://git.ratschlab.org/tex2013/vapnik_festschrift.git	Academic Free License v3.0
+322	ki_transfer_learning	raetschlab	raetschlab	Tex2013	This contains the 2013 papers sources	git://git.ratschlab.org/tex2013/ki_transfer_learning.git	Academic Free License v3.0
+323	poster	raetschlab	raetschlab	Tex2013	This contains the 2013 papers sources	git://git.ratschlab.org/tex2013/poster.git	Academic Free License v3.0
+324	pancancer	raetschlab	raetschlab	Tex2013	This contains the 2013 papers sources	git://git.ratschlab.org/tex2013/pancancer.git	Academic Free License v3.0
+329	translearnimage	raetschlab	raetschlab	Tex2013	This contains the 2013 papers sources	git://git.ratschlab.org/tex2013/translearnimage.git	Academic Free License v3.0
+342	strucpredcompbio	raetschlab	raetschlab	Tex2013	This contains the 2013 papers sources	git://git.ratschlab.org/tex2013/strucpredcompbio.git	Academic Free License v3.0
+343	ismb2013	raetschlab	raetschlab	Tex2013	This contains the 2013 papers sources	git://git.ratschlab.org/tex2013/ismb2013.git	Academic Free License v3.0
+344	strucpredbook	raetschlab	raetschlab	Tex2013	This contains the 2013 papers sources	git://git.ratschlab.org/tex2013/strucpredbook.git	Academic Free License v3.0
+345	starr	raetschlab	raetschlab	Tex2013	This contains the 2013 papers sources	git://git.ratschlab.org/tex2013/starr.git	Academic Free License v3.0
+351	clinicalnotes	raetschlab	raetschlab	Tex2013	This contains the 2013 papers sources	git://git.ratschlab.org/tex2013/clinicalnotes.git	Academic Free License v3.0
+359	mit-mgenengs	raetschlab	raetschlab	Tex2013	This contains the 2013 papers sources	git://git.ratschlab.org/tex2013/mit-mgenengs.git	Academic Free License v3.0
+367	healthcare-ws-nips13	raetschlab	raetschlab	Tex2013	This contains the 2013 papers sources	git://git.ratschlab.org/tex2013/healthcare-ws-nips13.git	Academic Free License v3.0
+301	c_elegans_12g	raetschlab	raetschlab	Projects2013	This project contains repositories created in 2013	git://git.ratschlab.org/projects2013/c_elegans_12g.git	Academic Free License v3.0
+302	pancancertcga	raetsch	raetschlab	Projects2013	This project contains repositories created in 2013	git://git.ratschlab.org/projects2013/pancancertcga.git	Academic Free License v3.0
+304	graph_tools	raetschlab	raetschlab	Projects2013	This project contains repositories created in 2013	git://git.ratschlab.org/projects2013/graph_tools.git	Academic Free License v3.0
+305	palmapper	raetschlab	raetschlab	Projects2013	This project contains repositories created in 2013	git://git.ratschlab.org/projects2013/palmapper.git	Academic Free License v3.0
+309	magic_rat	raetschlab	raetschlab	Projects2013	This project contains repositories created in 2013	git://git.ratschlab.org/projects2013/magic_rat.git	Academic Free License v3.0
+318	wendel_silvestrol	raetschlab	raetschlab	Projects2013	This project contains repositories created in 2013	git://git.ratschlab.org/projects2013/wendel_silvestrol.git	Academic Free License v3.0
+319	wendel_lymphoma	raetschlab	raetschlab	Projects2013	This project contains repositories created in 2013	git://git.ratschlab.org/projects2013/wendel_lymphoma.git	Academic Free License v3.0
+325	pancan_clinical	raetschlab	raetschlab	Projects2013	This project contains repositories created in 2013	git://git.ratschlab.org/projects2013/pancan_clinical.git	Academic Free License v3.0
+331	arab_400	raetschlab	raetschlab	Projects2013	This project contains repositories created in 2013	git://git.ratschlab.org/projects2013/arab_400.git	Academic Free License v3.0
+334	cancer-statistics	raetschlab	raetschlab	Projects2013	This project contains repositories created in 2013	git://git.ratschlab.org/projects2013/cancer-statistics.git	Academic Free License v3.0
+338	dpmip	raetschlab	raetschlab	Projects2013	This project contains repositories created in 2013	git://git.ratschlab.org/projects2013/dpmip.git	Academic Free License v3.0
+348	thca	raetschlab	raetschlab	Projects2013	This project contains repositories created in 2013	git://git.ratschlab.org/projects2013/thca.git	Academic Free License v3.0
+350	pathimageanaly	raetschlab	raetschlab	Projects2013	This project contains repositories created in 2013	git://git.ratschlab.org/projects2013/pathimageanaly.git	Academic Free License v3.0
+352	miccai13challenge	raetschlab	raetschlab	Projects2013	This project contains repositories created in 2013	git://git.ratschlab.org/projects2013/miccai13challenge.git	Academic Free License v3.0
+358	limix	raetschlab	raetschlab	Projects2013	This project contains repositories created in 2013	git://git.ratschlab.org/projects2013/limix.git	Academic Free License v3.0
+360	arabidopsis_cyto_nuc	raetschlab	raetschlab	Projects2013	This project contains repositories created in 2013	git://git.ratschlab.org/projects2013/arabidopsis_cyto_nuc.git	Academic Free License v3.0
+365	clinical_texts	raetsch	raetschlab	Projects2013	This project contains repositories created in 2013	git://git.ratschlab.org/projects2013/clinical_texts.git	Academic Free License v3.0
+376	wendel_michael	raetschlab	raetschlab	Projects2013	This project contains repositories created in 2013	git://git.ratschlab.org/projects2013/wendel_michael.git	Academic Free License v3.0
+377	volvox	raetschlab	raetschlab	Projects2013	This project contains repositories created in 2013	git://git.ratschlab.org/projects2013/volvox.git	Academic Free License v3.0
+378	metagenom	raetschlab	raetschlab	Projects2013	This project contains repositories created in 2013	git://git.ratschlab.org/projects2013/metagenom.git	Academic Free License v3.0
+469	ccle	raetschlab	raetschlab	Projects2013	This project contains repositories created in 2013	git://git.ratschlab.org/projects2013/ccle.git	Academic Free License v3.0
+293	kirmes	raetschlab	raetschlab	galaxy	This is the project that contains repositories used in galaxy.raetschlab.org	git://git.ratschlab.org/galaxy/kirmes.git	Academic Free License v3.0
+294	mtim	raetschlab	raetschlab	galaxy	This is the project that contains repositories used in galaxy.raetschlab.org	git://git.ratschlab.org/galaxy/mtim.git	Academic Free License v3.0
+295	mgene	raetschlab	raetschlab	galaxy	This is the project that contains repositories used in galaxy.raetschlab.org	git://git.ratschlab.org/galaxy/mgene.git	Academic Free License v3.0
+131	diplomarbeit_chris	raetschlab	raetschlab	Theses	All Bachelor, Master and PhD theses.	git://git.ratschlab.org/theses/diplomarbeit_chris.git	Academic Free License v3.0
+132	diplomarbeit_jonas	raetschlab	raetschlab	Theses	All Bachelor, Master and PhD theses.	git://git.ratschlab.org/theses/diplomarbeit_jonas.git	Academic Free License v3.0
+133	diplomarbeit_sebi	raetschlab	raetschlab	Theses	All Bachelor, Master and PhD theses.	git://git.ratschlab.org/theses/diplomarbeit_sebi.git	Academic Free License v3.0
+134	dis_chris	raetschlab	raetschlab	Theses	All Bachelor, Master and PhD theses.	git://git.ratschlab.org/theses/dis_chris.git	Academic Free License v3.0
+135	dis_gabi	raetschlab	raetschlab	Theses	All Bachelor, Master and PhD theses.	git://git.ratschlab.org/theses/dis_gabi.git	Academic Free License v3.0
+136	dis_regina	raetschlab	raetschlab	Theses	All Bachelor, Master and PhD theses.	git://git.ratschlab.org/theses/dis_regina.git	Academic Free License v3.0
+137	studienarbeit_regina	raetschlab	raetschlab	Theses	All Bachelor, Master and PhD theses.	git://git.ratschlab.org/theses/studienarbeit_regina.git	Academic Free License v3.0
+138	diplomarbeit_georg	raetschlab	raetschlab	Theses	All Bachelor, Master and PhD theses.	git://git.ratschlab.org/theses/diplomarbeit_georg.git	Academic Free License v3.0
+139	diplomarbeit_peter	raetschlab	raetschlab	Theses	All Bachelor, Master and PhD theses.	git://git.ratschlab.org/theses/diplomarbeit_peter.git	Academic Free License v3.0
+140	diplomarbeit_uta	raetschlab	raetschlab	Theses	All Bachelor, Master and PhD theses.	git://git.ratschlab.org/theses/diplomarbeit_uta.git	Academic Free License v3.0
+141	dis_elisabeth	raetschlab	raetschlab	Theses	All Bachelor, Master and PhD theses.	git://git.ratschlab.org/theses/dis_elisabeth.git	Academic Free License v3.0
+142	dis_georg	raetschlab	raetschlab	Theses	All Bachelor, Master and PhD theses.	git://git.ratschlab.org/theses/dis_georg.git	Academic Free License v3.0
+143	diss_philipp	raetschlab	raetschlab	Theses	All Bachelor, Master and PhD theses.	git://git.ratschlab.org/theses/diss_philipp.git	Academic Free License v3.0
+144	masterthesis_behrouz	raetschlab	raetschlab	Theses	All Bachelor, Master and PhD theses.	git://git.ratschlab.org/theses/masterthesis_behrouz.git	Academic Free License v3.0
+145	diplomarbeit_johannes	raetschlab	raetschlab	Theses	All Bachelor, Master and PhD theses.	git://git.ratschlab.org/theses/diplomarbeit_johannes.git	Academic Free License v3.0
+146	diplomarbeit_regina	raetschlab	raetschlab	Theses	All Bachelor, Master and PhD theses.	git://git.ratschlab.org/theses/diplomarbeit_regina.git	Academic Free License v3.0
+147	dis_andre	raetschlab	raetschlab	Theses	All Bachelor, Master and PhD theses.	git://git.ratschlab.org/theses/dis_andre.git	Academic Free License v3.0
+148	dis_fabio	raetschlab	raetschlab	Theses	All Bachelor, Master and PhD theses.	git://git.ratschlab.org/theses/dis_fabio.git	Academic Free License v3.0
+149	dis_jonas	raetschlab	raetschlab	Theses	All Bachelor, Master and PhD theses.	git://git.ratschlab.org/theses/dis_jonas.git	Academic Free License v3.0
+150	diss_sebi	raetschlab	raetschlab	Theses	All Bachelor, Master and PhD theses.	git://git.ratschlab.org/theses/diss_sebi.git	Academic Free License v3.0
+151	studienarbeit_jonas	raetschlab	raetschlab	Theses	All Bachelor, Master and PhD theses.	git://git.ratschlab.org/theses/studienarbeit_jonas.git	Academic Free License v3.0
+448	dis_yi	raetschlab	raetschlab	Theses	All Bachelor, Master and PhD theses.	git://git.ratschlab.org/theses/dis_yi.git	Academic Free License v3.0
+476	ace_steph	raetschlab	raetschlab	Theses	All Bachelor, Master and PhD theses.	git://git.ratschlab.org/theses/ace_steph.git	Academic Free License v3.0
+126	tex	raetschlab	raetschlab	Tex2005	Tex from 2006	git://git.ratschlab.org/tex2005/tex.git	Academic Free License v3.0
+123	tex	raetschlab	raetschlab	Tex2006	Tex from 2006	git://git.ratschlab.org/tex2006/tex.git	Academic Free License v3.0
+119	talks	raetschlab	raetschlab	Tex2007	Tex from 2007	git://git.ratschlab.org/tex2007/talks.git	Academic Free License v3.0
+124	tex	raetschlab	raetschlab	Tex2007	Tex from 2007	git://git.ratschlab.org/tex2007/tex.git	Academic Free License v3.0
+117	talks	raetschlab	raetschlab	Tex2008	Tex from 2007	git://git.ratschlab.org/tex2008/talks.git	Academic Free License v3.0
+127	tex	raetschlab	raetschlab	Tex2008	Tex from 2007	git://git.ratschlab.org/tex2008/tex.git	Academic Free License v3.0
+115	talks	raetschlab	raetschlab	Tex2009	Tex from 2009	git://git.ratschlab.org/tex2009/talks.git	Academic Free License v3.0
+120	talks_mgene	raetschlab	raetschlab	Tex2009	Tex from 2009	git://git.ratschlab.org/tex2009/talks_mgene.git	Academic Free License v3.0
+121	group-overview	raetschlab	raetschlab	Tex2009	Tex from 2009	git://git.ratschlab.org/tex2009/group-overview.git	Academic Free License v3.0
+128	tex	raetschlab	raetschlab	Tex2009	Tex from 2009	git://git.ratschlab.org/tex2009/tex.git	Academic Free License v3.0
+113	talks	raetschlab	raetschlab	Tex2010	Tex from 2010	git://git.ratschlab.org/tex2010/talks.git	Academic Free License v3.0
+129	tex	raetschlab	raetschlab	Tex2010	Tex from 2010	git://git.ratschlab.org/tex2010/tex.git	Academic Free License v3.0
+111	talks	raetschlab	raetschlab	Tex2011	The tex projects from 2011	git://git.ratschlab.org/tex2011/talks.git	Academic Free License v3.0
+237	a_thaliana_magic	raetschlab	raetschlab	Tex2011	The tex projects from 2011	git://git.ratschlab.org/tex2011/a_thaliana_magic.git	Academic Free License v3.0
+239	cshl_genome_informatics	raetschlab	raetschlab	Tex2011	The tex projects from 2011	git://git.ratschlab.org/tex2011/cshl_genome_informatics.git	Academic Free License v3.0
+241	icml	raetschlab	raetschlab	Tex2011	The tex projects from 2011	git://git.ratschlab.org/tex2011/icml.git	Academic Free License v3.0
+242	ismb11	raetschlab	raetschlab	Tex2011	The tex projects from 2011	git://git.ratschlab.org/tex2011/ismb11.git	Academic Free License v3.0
+243	nips2011	raetschlab	raetschlab	Tex2011	The tex projects from 2011	git://git.ratschlab.org/tex2011/nips2011.git	Academic Free License v3.0
+246	palmapper	raetschlab	raetschlab	Tex2011	The tex projects from 2011	git://git.ratschlab.org/tex2011/palmapper.git	Academic Free License v3.0
+248	plos_genetics_ivanov	raetschlab	raetschlab	Tex2011	The tex projects from 2011	git://git.ratschlab.org/tex2011/plos_genetics_ivanov.git	Academic Free License v3.0
+249	phd_symposium	raetschlab	raetschlab	Tex2011	The tex projects from 2011	git://git.ratschlab.org/tex2011/phd_symposium.git	Academic Free License v3.0
+250	saft	raetschlab	raetschlab	Tex2011	The tex projects from 2011	git://git.ratschlab.org/tex2011/saft.git	Academic Free License v3.0
+251	arts-mtl	raetschlab	raetschlab	Tex2011	The tex projects from 2011	git://git.ratschlab.org/tex2011/arts-mtl.git	Academic Free License v3.0
+252	mtim	raetschlab	raetschlab	Tex2011	The tex projects from 2011	git://git.ratschlab.org/tex2011/mtim.git	Academic Free License v3.0
+253	mip	raetschlab	raetschlab	Tex2011	The tex projects from 2011	git://git.ratschlab.org/tex2011/mip.git	Academic Free License v3.0
+254	rquant	raetschlab	raetschlab	Tex2011	The tex projects from 2011	git://git.ratschlab.org/tex2011/rquant.git	Academic Free License v3.0
+255	srm-eval	raetschlab	raetschlab	Tex2011	The tex projects from 2011	git://git.ratschlab.org/tex2011/srm-eval.git	Academic Free License v3.0
+256	rnabiology	raetschlab	raetschlab	Tex2011	The tex projects from 2011	git://git.ratschlab.org/tex2011/rnabiology.git	Academic Free License v3.0
+257	em-svm	raetschlab	raetschlab	Tex2011	The tex projects from 2011	git://git.ratschlab.org/tex2011/em-svm.git	Academic Free License v3.0
+258	berlinsummermeeting2011	raetschlab	raetschlab	Tex2011	The tex projects from 2011	git://git.ratschlab.org/tex2011/berlinsummermeeting2011.git	Academic Free License v3.0
+259	rdiff_genomeinformatics2011	raetschlab	raetschlab	Tex2011	The tex projects from 2011	git://git.ratschlab.org/tex2011/rdiff_genomeinformatics2011.git	Academic Free License v3.0
+260	rdiff_genomeinformatics2011_again	raetschlab	raetschlab	Tex2011	The tex projects from 2011	git://git.ratschlab.org/tex2011/rdiff_genomeinformatics2011_again.git	Academic Free License v3.0
+84	sandbox	akahles	akahles	Sandbox	Sandbox to try around	git://git.ratschlab.org/sandbox/sandbox.git	Academic Free License v3.0
+280	poim-sandbox	ngoernitz	akahles	Sandbox	Sandbox to try around	git://git.ratschlab.org/~ngoernitz/sandbox/poim-sandbox.git	Academic Free License v3.0

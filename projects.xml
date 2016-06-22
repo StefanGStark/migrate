@@ -1,0 +1,1335 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projects type="array">
+  <project>
+    <bugtracker-url nil="true"></bugtracker-url>
+    <created-at type="datetime">2016-01-26T18:04:48Z</created-at>
+    <description>Tex 2016</description>
+    <home-url nil="true"></home-url>
+    <license>Academic Free License v3.0</license>
+    <mailinglist-url nil="true"></mailinglist-url>
+    <slug>tex2016</slug>
+    <title>Tex2016</title>
+    <wiki-enabled type="boolean">true</wiki-enabled>
+    <owner kind="Team">raetschlab</owner>
+    <repositories type="array">
+      <mainlines type="array">
+        <repository>
+          <id>481</id>
+          <name>mulitanno-erc</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/tex2016/mulitanno-erc.git</clone_url>
+        </repository>
+        <repository>
+          <id>483</id>
+          <name>talks2016</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/tex2016/talks2016.git</clone_url>
+        </repository>
+        <repository>
+          <id>486</id>
+          <name>iclr_2016_opbn_paper</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/tex2016/iclr_2016_opbn_paper.git</clone_url>
+        </repository>
+        <repository>
+          <id>489</id>
+          <name>qrisp</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/tex2016/qrisp.git</clone_url>
+        </repository>
+      </mainlines>
+      <clones type="array">
+      </clones>
+    </repositories>
+  </project>
+  <project>
+    <bugtracker-url nil="true"></bugtracker-url>
+    <created-at type="datetime">2015-04-07T16:09:43Z</created-at>
+    <description>This directory should contain repositories that collect tex resources such as logos, poster templates, talk templates, ...</description>
+    <home-url nil="true"></home-url>
+    <license>Academic Free License v3.0</license>
+    <mailinglist-url nil="true"></mailinglist-url>
+    <slug>tex-resources</slug>
+    <title>Tex Resources</title>
+    <wiki-enabled type="boolean">true</wiki-enabled>
+    <owner kind="Team">raetschlab</owner>
+    <repositories type="array">
+      <mainlines type="array">
+        <repository>
+          <id>435</id>
+          <name>logos</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/tex-resources/logos.git</clone_url>
+        </repository>
+      </mainlines>
+      <clones type="array">
+      </clones>
+    </repositories>
+  </project>
+  <project>
+    <bugtracker-url nil="true"></bugtracker-url>
+    <created-at type="datetime">2015-03-02T14:43:01Z</created-at>
+    <description>Should contain all project repositories of 2015</description>
+    <home-url nil="true"></home-url>
+    <license>Academic Free License v3.0</license>
+    <mailinglist-url nil="true"></mailinglist-url>
+    <slug>projects2015</slug>
+    <title>Projects2015</title>
+    <wiki-enabled type="boolean">true</wiki-enabled>
+    <owner kind="Team">raetschlab</owner>
+    <repositories type="array">
+      <mainlines type="array">
+        <repository>
+          <id>430</id>
+          <name>arabidopsis_klaus</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/projects2015/arabidopsis_klaus.git</clone_url>
+        </repository>
+        <repository>
+          <id>431</id>
+          <name>clonalreconstruction</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/projects2015/clonalreconstruction.git</clone_url>
+        </repository>
+        <repository>
+          <id>441</id>
+          <name>cancerimages</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/projects2015/cancerimages.git</clone_url>
+        </repository>
+        <repository>
+          <id>444</id>
+          <name>genetic-associations-psb-paper</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/projects2015/genetic-associations-psb-paper.git</clone_url>
+        </repository>
+        <repository>
+          <id>449</id>
+          <name>fireworks</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/projects2015/fireworks.git</clone_url>
+        </repository>
+        <repository>
+          <id>450</id>
+          <name>cmo</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/projects2015/cmo.git</clone_url>
+        </repository>
+        <repository>
+          <id>451</id>
+          <name>facets</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/projects2015/facets.git</clone_url>
+        </repository>
+        <repository>
+          <id>452</id>
+          <name>miranda</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/projects2015/miranda.git</clone_url>
+        </repository>
+        <repository>
+          <id>453</id>
+          <name>vcf2maf</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/projects2015/vcf2maf.git</clone_url>
+        </repository>
+        <repository>
+          <id>454</id>
+          <name>vcf2tsv</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/projects2015/vcf2tsv.git</clone_url>
+        </repository>
+        <repository>
+          <id>455</id>
+          <name>vcf_accuracy</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/projects2015/vcf_accuracy.git</clone_url>
+        </repository>
+        <repository>
+          <id>459</id>
+          <name>translation_boundaries_prediction</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/projects2015/translation_boundaries_prediction.git</clone_url>
+        </repository>
+        <repository>
+          <id>460</id>
+          <name>uvm_raj</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/projects2015/uvm_raj.git</clone_url>
+        </repository>
+        <repository>
+          <id>461</id>
+          <name>guido_projects_nrd44</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/projects2015/guido_projects_nrd44.git</clone_url>
+        </repository>
+        <repository>
+          <id>462</id>
+          <name>rnaseq_library_r</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/projects2015/rnaseq_library_r.git</clone_url>
+        </repository>
+        <repository>
+          <id>463</id>
+          <name>a_thal_markus</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/projects2015/a_thal_markus.git</clone_url>
+        </repository>
+        <repository>
+          <id>464</id>
+          <name>ribodiff_extensions</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/projects2015/ribodiff_extensions.git</clone_url>
+        </repository>
+        <repository>
+          <id>465</id>
+          <name>raj_norway_eye</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/projects2015/raj_norway_eye.git</clone_url>
+        </repository>
+        <repository>
+          <id>470</id>
+          <name>arts2_compbio</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/projects2015/arts2_compbio.git</clone_url>
+        </repository>
+        <repository>
+          <id>472</id>
+          <name>sync</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/projects2015/sync.git</clone_url>
+        </repository>
+        <repository>
+          <id>474</id>
+          <name>opbn</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/projects2015/opbn.git</clone_url>
+        </repository>
+      </mainlines>
+      <clones type="array">
+      </clones>
+    </repositories>
+  </project>
+  <project>
+    <bugtracker-url nil="true"></bugtracker-url>
+    <created-at type="datetime">2015-01-15T02:40:14Z</created-at>
+    <description>All the many papers that we write in 2015.</description>
+    <home-url nil="true"></home-url>
+    <license>Academic Free License v3.0</license>
+    <mailinglist-url nil="true"></mailinglist-url>
+    <slug>tex2015</slug>
+    <title>Tex2015</title>
+    <wiki-enabled type="boolean">true</wiki-enabled>
+    <owner kind="Team">raetschlab</owner>
+    <repositories type="array">
+      <mainlines type="array">
+        <repository>
+          <id>427</id>
+          <name>talks</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/tex2015/talks.git</clone_url>
+        </repository>
+        <repository>
+          <id>428</id>
+          <name>ribodiff</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/tex2015/ribodiff.git</clone_url>
+        </repository>
+        <repository>
+          <id>439</id>
+          <name>sentencecluster</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/tex2015/sentencecluster.git</clone_url>
+        </repository>
+        <repository>
+          <id>440</id>
+          <name>zurich</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/tex2015/zurich.git</clone_url>
+        </repository>
+        <repository>
+          <id>447</id>
+          <name>deep_bayesian_medical</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/tex2015/deep_bayesian_medical.git</clone_url>
+        </repository>
+        <repository>
+          <id>458</id>
+          <name>wordreps</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/tex2015/wordreps.git</clone_url>
+        </repository>
+        <repository>
+          <id>471</id>
+          <name>mtmkl_jmlr</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/tex2015/mtmkl_jmlr.git</clone_url>
+        </repository>
+      </mainlines>
+      <clones type="array">
+      </clones>
+    </repositories>
+  </project>
+  <project>
+    <bugtracker-url nil="true"></bugtracker-url>
+    <created-at type="datetime">2014-02-17T20:01:04Z</created-at>
+    <description>These are the 2014 projects.</description>
+    <home-url nil="true"></home-url>
+    <license>Academic Free License v3.0</license>
+    <mailinglist-url nil="true"></mailinglist-url>
+    <slug>projects2014</slug>
+    <title>Projects2014</title>
+    <wiki-enabled type="boolean">true</wiki-enabled>
+    <owner kind="Team">raetschlab</owner>
+    <repositories type="array">
+      <mainlines type="array">
+        <repository>
+          <id>384</id>
+          <name>ribosomefootprinting</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/projects2014/ribosomefootprinting.git</clone_url>
+        </repository>
+        <repository>
+          <id>387</id>
+          <name>sdiff</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/projects2014/sdiff.git</clone_url>
+        </repository>
+        <repository>
+          <id>388</id>
+          <name>epican</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/projects2014/epican.git</clone_url>
+        </repository>
+        <repository>
+          <id>389</id>
+          <name>beene-shared-storage-scripts</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/projects2014/beene-shared-storage-scripts.git</clone_url>
+        </repository>
+        <repository>
+          <id>390</id>
+          <name>clinicaltexts</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/projects2014/clinicaltexts.git</clone_url>
+        </repository>
+        <repository>
+          <id>391</id>
+          <name>timeline</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/projects2014/timeline.git</clone_url>
+        </repository>
+        <repository>
+          <id>392</id>
+          <name>accounting_overview</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/projects2014/accounting_overview.git</clone_url>
+        </repository>
+        <repository>
+          <id>393</id>
+          <name>a_thaliana_markus</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/projects2014/a_thaliana_markus.git</clone_url>
+        </repository>
+        <repository>
+          <id>396</id>
+          <name>wendel_harringtonine</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/projects2014/wendel_harringtonine.git</clone_url>
+        </repository>
+        <repository>
+          <id>398</id>
+          <name>patient_representation</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/projects2014/patient_representation.git</clone_url>
+        </repository>
+        <repository>
+          <id>400</id>
+          <name>comppath-mevlana</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/projects2014/comppath-mevlana.git</clone_url>
+        </repository>
+        <repository>
+          <id>405</id>
+          <name>cluster-migration-tools</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/projects2014/cluster-migration-tools.git</clone_url>
+        </repository>
+        <repository>
+          <id>406</id>
+          <name>wordreps</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/projects2014/wordreps.git</clone_url>
+        </repository>
+        <repository>
+          <id>409</id>
+          <name>prad</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/projects2014/prad.git</clone_url>
+        </repository>
+        <repository>
+          <id>410</id>
+          <name>skcm_qtl</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/projects2014/skcm_qtl.git</clone_url>
+        </repository>
+        <repository>
+          <id>411</id>
+          <name>ivashkiv_footprint</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/projects2014/ivashkiv_footprint.git</clone_url>
+        </repository>
+        <repository>
+          <id>412</id>
+          <name>ivashkiv_chiprna</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/projects2014/ivashkiv_chiprna.git</clone_url>
+        </repository>
+        <repository>
+          <id>415</id>
+          <name>ucs_qtl</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/projects2014/ucs_qtl.git</clone_url>
+        </repository>
+        <repository>
+          <id>417</id>
+          <name>similaritysearch</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/projects2014/similaritysearch.git</clone_url>
+        </repository>
+        <repository>
+          <id>418</id>
+          <name>timelinebrowser</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/projects2014/timelinebrowser.git</clone_url>
+        </repository>
+        <repository>
+          <id>419</id>
+          <name>wendel_pancreatic_cancer</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/projects2014/wendel_pancreatic_cancer.git</clone_url>
+        </repository>
+        <repository>
+          <id>424</id>
+          <name>icgc</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/projects2014/icgc.git</clone_url>
+        </repository>
+        <repository>
+          <id>425</id>
+          <name>metagenome</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/projects2014/metagenome.git</clone_url>
+        </repository>
+        <repository>
+          <id>436</id>
+          <name>pancan_ewas</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/projects2014/pancan_ewas.git</clone_url>
+        </repository>
+        <repository>
+          <id>466</id>
+          <name>castori</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/projects2014/castori.git</clone_url>
+        </repository>
+        <repository>
+          <id>467</id>
+          <name>grant_lowe</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/projects2014/grant_lowe.git</clone_url>
+        </repository>
+        <repository>
+          <id>468</id>
+          <name>truncations</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/projects2014/truncations.git</clone_url>
+        </repository>
+      </mainlines>
+      <clones type="array">
+        <repository>
+          <id>399</id>
+          <name>crosbiecs-clinicaltexts</name>
+          <owner kind="User">crosbiec</owner>
+          <clone_url>git://git.ratschlab.org/~crosbiec/projects2014/crosbiecs-clinicaltexts.git</clone_url>
+        </repository>
+        <repository>
+          <id>478</id>
+          <name>gideonites-metagenome</name>
+          <owner kind="User">gideonite</owner>
+          <clone_url>git://git.ratschlab.org/~gideonite/projects2014/gideonites-metagenome.git</clone_url>
+        </repository>
+        <repository>
+          <id>482</id>
+          <name>akahless-metagenome</name>
+          <owner kind="User">akahles</owner>
+          <clone_url>git://git.ratschlab.org/~akahles/projects2014/akahless-metagenome.git</clone_url>
+        </repository>
+      </clones>
+    </repositories>
+  </project>
+  <project>
+    <bugtracker-url nil="true"></bugtracker-url>
+    <created-at type="datetime">2014-01-09T07:37:10Z</created-at>
+    <description>All the many papers that we write in 2014.</description>
+    <home-url nil="true"></home-url>
+    <license>Academic Free License v3.0</license>
+    <mailinglist-url nil="true"></mailinglist-url>
+    <slug>tex2014</slug>
+    <title>Tex2014</title>
+    <wiki-enabled type="boolean">true</wiki-enabled>
+    <owner kind="Team">raetschlab</owner>
+    <repositories type="array">
+      <mainlines type="array">
+        <repository>
+          <id>380</id>
+          <name>200g-methylation</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/tex2014/200g-methylation.git</clone_url>
+        </repository>
+        <repository>
+          <id>381</id>
+          <name>talks</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/tex2014/talks.git</clone_url>
+        </repository>
+        <repository>
+          <id>382</id>
+          <name>spladder</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/tex2014/spladder.git</clone_url>
+        </repository>
+        <repository>
+          <id>385</id>
+          <name>homopbwt</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/tex2014/homopbwt.git</clone_url>
+        </repository>
+        <repository>
+          <id>402</id>
+          <name>tetiwd</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/tex2014/tetiwd.git</clone_url>
+        </repository>
+        <repository>
+          <id>414</id>
+          <name>comppath-notes</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/tex2014/comppath-notes.git</clone_url>
+        </repository>
+        <repository>
+          <id>420</id>
+          <name>mtl-arts2</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/tex2014/mtl-arts2.git</clone_url>
+        </repository>
+        <repository>
+          <id>421</id>
+          <name>clonalreconstruction</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/tex2014/clonalreconstruction.git</clone_url>
+        </repository>
+        <repository>
+          <id>422</id>
+          <name>cl_association</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/tex2014/cl_association.git</clone_url>
+        </repository>
+      </mainlines>
+      <clones type="array">
+        <repository>
+          <id>423</id>
+          <name>amitdeshwars-clonalreconstruction</name>
+          <owner kind="User">amitdeshwar</owner>
+          <clone_url>git://git.ratschlab.org/~amitdeshwar/tex2014/amitdeshwars-clonalreconstruction.git</clone_url>
+        </repository>
+      </clones>
+    </repositories>
+  </project>
+  <project>
+    <bugtracker-url nil="true"></bugtracker-url>
+    <created-at type="datetime">2013-01-25T16:39:20Z</created-at>
+    <description>This contains the 2013 papers sources</description>
+    <home-url nil="true"></home-url>
+    <license>Academic Free License v3.0</license>
+    <mailinglist-url nil="true"></mailinglist-url>
+    <slug>tex2013</slug>
+    <title>Tex2013</title>
+    <wiki-enabled type="boolean">true</wiki-enabled>
+    <owner kind="Team">raetschlab</owner>
+    <repositories type="array">
+      <mainlines type="array">
+        <repository>
+          <id>308</id>
+          <name>palmapper</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/tex2013/palmapper.git</clone_url>
+        </repository>
+        <repository>
+          <id>310</id>
+          <name>talks</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/tex2013/talks.git</clone_url>
+        </repository>
+        <repository>
+          <id>311</id>
+          <name>vapnik_festschrift</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/tex2013/vapnik_festschrift.git</clone_url>
+        </repository>
+        <repository>
+          <id>322</id>
+          <name>ki_transfer_learning</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/tex2013/ki_transfer_learning.git</clone_url>
+        </repository>
+        <repository>
+          <id>323</id>
+          <name>poster</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/tex2013/poster.git</clone_url>
+        </repository>
+        <repository>
+          <id>324</id>
+          <name>pancancer</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/tex2013/pancancer.git</clone_url>
+        </repository>
+        <repository>
+          <id>329</id>
+          <name>translearnimage</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/tex2013/translearnimage.git</clone_url>
+        </repository>
+        <repository>
+          <id>342</id>
+          <name>strucpredcompbio</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/tex2013/strucpredcompbio.git</clone_url>
+        </repository>
+        <repository>
+          <id>343</id>
+          <name>ismb2013</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/tex2013/ismb2013.git</clone_url>
+        </repository>
+        <repository>
+          <id>344</id>
+          <name>strucpredbook</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/tex2013/strucpredbook.git</clone_url>
+        </repository>
+        <repository>
+          <id>345</id>
+          <name>starr</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/tex2013/starr.git</clone_url>
+        </repository>
+        <repository>
+          <id>351</id>
+          <name>clinicalnotes</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/tex2013/clinicalnotes.git</clone_url>
+        </repository>
+        <repository>
+          <id>359</id>
+          <name>mit-mgenengs</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/tex2013/mit-mgenengs.git</clone_url>
+        </repository>
+        <repository>
+          <id>367</id>
+          <name>healthcare-ws-nips13</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/tex2013/healthcare-ws-nips13.git</clone_url>
+        </repository>
+      </mainlines>
+      <clones type="array">
+      </clones>
+    </repositories>
+  </project>
+  <project>
+    <bugtracker-url nil="true"></bugtracker-url>
+    <created-at type="datetime">2013-01-11T22:14:17Z</created-at>
+    <description>This project contains repositories created in 2013</description>
+    <home-url nil="true"></home-url>
+    <license>Academic Free License v3.0</license>
+    <mailinglist-url nil="true"></mailinglist-url>
+    <slug>projects2013</slug>
+    <title>Projects2013</title>
+    <wiki-enabled type="boolean">true</wiki-enabled>
+    <owner kind="Team">raetschlab</owner>
+    <repositories type="array">
+      <mainlines type="array">
+        <repository>
+          <id>301</id>
+          <name>c_elegans_12g</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/projects2013/c_elegans_12g.git</clone_url>
+        </repository>
+        <repository>
+          <id>302</id>
+          <name>pancancertcga</name>
+          <owner kind="User">raetsch</owner>
+          <clone_url>git://git.ratschlab.org/projects2013/pancancertcga.git</clone_url>
+        </repository>
+        <repository>
+          <id>304</id>
+          <name>graph_tools</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/projects2013/graph_tools.git</clone_url>
+        </repository>
+        <repository>
+          <id>305</id>
+          <name>palmapper</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/projects2013/palmapper.git</clone_url>
+        </repository>
+        <repository>
+          <id>309</id>
+          <name>magic_rat</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/projects2013/magic_rat.git</clone_url>
+        </repository>
+        <repository>
+          <id>318</id>
+          <name>wendel_silvestrol</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/projects2013/wendel_silvestrol.git</clone_url>
+        </repository>
+        <repository>
+          <id>319</id>
+          <name>wendel_lymphoma</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/projects2013/wendel_lymphoma.git</clone_url>
+        </repository>
+        <repository>
+          <id>325</id>
+          <name>pancan_clinical</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/projects2013/pancan_clinical.git</clone_url>
+        </repository>
+        <repository>
+          <id>331</id>
+          <name>arab_400</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/projects2013/arab_400.git</clone_url>
+        </repository>
+        <repository>
+          <id>334</id>
+          <name>cancer-statistics</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/projects2013/cancer-statistics.git</clone_url>
+        </repository>
+        <repository>
+          <id>338</id>
+          <name>dpmip</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/projects2013/dpmip.git</clone_url>
+        </repository>
+        <repository>
+          <id>348</id>
+          <name>thca</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/projects2013/thca.git</clone_url>
+        </repository>
+        <repository>
+          <id>350</id>
+          <name>pathimageanaly</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/projects2013/pathimageanaly.git</clone_url>
+        </repository>
+        <repository>
+          <id>352</id>
+          <name>miccai13challenge</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/projects2013/miccai13challenge.git</clone_url>
+        </repository>
+        <repository>
+          <id>358</id>
+          <name>limix</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/projects2013/limix.git</clone_url>
+        </repository>
+        <repository>
+          <id>360</id>
+          <name>arabidopsis_cyto_nuc</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/projects2013/arabidopsis_cyto_nuc.git</clone_url>
+        </repository>
+        <repository>
+          <id>365</id>
+          <name>clinical_texts</name>
+          <owner kind="User">raetsch</owner>
+          <clone_url>git://git.ratschlab.org/projects2013/clinical_texts.git</clone_url>
+        </repository>
+        <repository>
+          <id>376</id>
+          <name>wendel_michael</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/projects2013/wendel_michael.git</clone_url>
+        </repository>
+        <repository>
+          <id>377</id>
+          <name>volvox</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/projects2013/volvox.git</clone_url>
+        </repository>
+        <repository>
+          <id>378</id>
+          <name>metagenom</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/projects2013/metagenom.git</clone_url>
+        </repository>
+        <repository>
+          <id>469</id>
+          <name>ccle</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/projects2013/ccle.git</clone_url>
+        </repository>
+      </mainlines>
+      <clones type="array">
+      </clones>
+    </repositories>
+  </project>
+  <project>
+    <bugtracker-url nil="true"></bugtracker-url>
+    <created-at type="datetime">2012-10-31T16:54:18Z</created-at>
+    <description>This is the project that contains repositories used in galaxy.raetschlab.org</description>
+    <home-url>http://galaxy.raetschlab.org</home-url>
+    <license>Academic Free License v3.0</license>
+    <mailinglist-url nil="true"></mailinglist-url>
+    <slug>galaxy</slug>
+    <title>galaxy</title>
+    <wiki-enabled type="boolean">true</wiki-enabled>
+    <owner kind="Team">raetschlab</owner>
+    <repositories type="array">
+      <mainlines type="array">
+        <repository>
+          <id>293</id>
+          <name>kirmes</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/galaxy/kirmes.git</clone_url>
+        </repository>
+        <repository>
+          <id>294</id>
+          <name>mtim</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/galaxy/mtim.git</clone_url>
+        </repository>
+        <repository>
+          <id>295</id>
+          <name>mgene</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/galaxy/mgene.git</clone_url>
+        </repository>
+      </mainlines>
+      <clones type="array">
+      </clones>
+    </repositories>
+  </project>
+  <project>
+    <bugtracker-url nil="true"></bugtracker-url>
+    <created-at type="datetime">2012-09-14T23:07:20Z</created-at>
+    <description>All Bachelor, Master and PhD theses.</description>
+    <home-url nil="true"></home-url>
+    <license>Academic Free License v3.0</license>
+    <mailinglist-url nil="true"></mailinglist-url>
+    <slug>theses</slug>
+    <title>Theses</title>
+    <wiki-enabled type="boolean">true</wiki-enabled>
+    <owner kind="Team">raetschlab</owner>
+    <repositories type="array">
+      <mainlines type="array">
+        <repository>
+          <id>131</id>
+          <name>diplomarbeit_chris</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/theses/diplomarbeit_chris.git</clone_url>
+        </repository>
+        <repository>
+          <id>132</id>
+          <name>diplomarbeit_jonas</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/theses/diplomarbeit_jonas.git</clone_url>
+        </repository>
+        <repository>
+          <id>133</id>
+          <name>diplomarbeit_sebi</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/theses/diplomarbeit_sebi.git</clone_url>
+        </repository>
+        <repository>
+          <id>134</id>
+          <name>dis_chris</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/theses/dis_chris.git</clone_url>
+        </repository>
+        <repository>
+          <id>135</id>
+          <name>dis_gabi</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/theses/dis_gabi.git</clone_url>
+        </repository>
+        <repository>
+          <id>136</id>
+          <name>dis_regina</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/theses/dis_regina.git</clone_url>
+        </repository>
+        <repository>
+          <id>137</id>
+          <name>studienarbeit_regina</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/theses/studienarbeit_regina.git</clone_url>
+        </repository>
+        <repository>
+          <id>138</id>
+          <name>diplomarbeit_georg</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/theses/diplomarbeit_georg.git</clone_url>
+        </repository>
+        <repository>
+          <id>139</id>
+          <name>diplomarbeit_peter</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/theses/diplomarbeit_peter.git</clone_url>
+        </repository>
+        <repository>
+          <id>140</id>
+          <name>diplomarbeit_uta</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/theses/diplomarbeit_uta.git</clone_url>
+        </repository>
+        <repository>
+          <id>141</id>
+          <name>dis_elisabeth</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/theses/dis_elisabeth.git</clone_url>
+        </repository>
+        <repository>
+          <id>142</id>
+          <name>dis_georg</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/theses/dis_georg.git</clone_url>
+        </repository>
+        <repository>
+          <id>143</id>
+          <name>diss_philipp</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/theses/diss_philipp.git</clone_url>
+        </repository>
+        <repository>
+          <id>144</id>
+          <name>masterthesis_behrouz</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/theses/masterthesis_behrouz.git</clone_url>
+        </repository>
+        <repository>
+          <id>145</id>
+          <name>diplomarbeit_johannes</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/theses/diplomarbeit_johannes.git</clone_url>
+        </repository>
+        <repository>
+          <id>146</id>
+          <name>diplomarbeit_regina</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/theses/diplomarbeit_regina.git</clone_url>
+        </repository>
+        <repository>
+          <id>147</id>
+          <name>dis_andre</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/theses/dis_andre.git</clone_url>
+        </repository>
+        <repository>
+          <id>148</id>
+          <name>dis_fabio</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/theses/dis_fabio.git</clone_url>
+        </repository>
+        <repository>
+          <id>149</id>
+          <name>dis_jonas</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/theses/dis_jonas.git</clone_url>
+        </repository>
+        <repository>
+          <id>150</id>
+          <name>diss_sebi</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/theses/diss_sebi.git</clone_url>
+        </repository>
+        <repository>
+          <id>151</id>
+          <name>studienarbeit_jonas</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/theses/studienarbeit_jonas.git</clone_url>
+        </repository>
+        <repository>
+          <id>448</id>
+          <name>dis_yi</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/theses/dis_yi.git</clone_url>
+        </repository>
+        <repository>
+          <id>476</id>
+          <name>ace_steph</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/theses/ace_steph.git</clone_url>
+        </repository>
+      </mainlines>
+      <clones type="array">
+      </clones>
+    </repositories>
+  </project>
+  <project>
+    <bugtracker-url nil="true"></bugtracker-url>
+    <created-at type="datetime">2012-09-14T22:41:41Z</created-at>
+    <description>Tex from 2006</description>
+    <home-url>http://raetschlab.org</home-url>
+    <license>Academic Free License v3.0</license>
+    <mailinglist-url nil="true"></mailinglist-url>
+    <slug>tex2005</slug>
+    <title>Tex2005</title>
+    <wiki-enabled type="boolean">true</wiki-enabled>
+    <owner kind="Team">raetschlab</owner>
+    <repositories type="array">
+      <mainlines type="array">
+        <repository>
+          <id>126</id>
+          <name>tex</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/tex2005/tex.git</clone_url>
+        </repository>
+      </mainlines>
+      <clones type="array">
+      </clones>
+    </repositories>
+  </project>
+  <project>
+    <bugtracker-url nil="true"></bugtracker-url>
+    <created-at type="datetime">2012-09-14T22:40:41Z</created-at>
+    <description>Tex from 2006</description>
+    <home-url nil="true"></home-url>
+    <license>Academic Free License v3.0</license>
+    <mailinglist-url nil="true"></mailinglist-url>
+    <slug>tex2006</slug>
+    <title>Tex2006</title>
+    <wiki-enabled type="boolean">true</wiki-enabled>
+    <owner kind="Team">raetschlab</owner>
+    <repositories type="array">
+      <mainlines type="array">
+        <repository>
+          <id>123</id>
+          <name>tex</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/tex2006/tex.git</clone_url>
+        </repository>
+      </mainlines>
+      <clones type="array">
+      </clones>
+    </repositories>
+  </project>
+  <project>
+    <bugtracker-url nil="true"></bugtracker-url>
+    <created-at type="datetime">2012-09-14T21:54:21Z</created-at>
+    <description>Tex from 2007</description>
+    <home-url>http://raetschlab.org</home-url>
+    <license>Academic Free License v3.0</license>
+    <mailinglist-url nil="true"></mailinglist-url>
+    <slug>tex2007</slug>
+    <title>Tex2007</title>
+    <wiki-enabled type="boolean">true</wiki-enabled>
+    <owner kind="Team">raetschlab</owner>
+    <repositories type="array">
+      <mainlines type="array">
+        <repository>
+          <id>119</id>
+          <name>talks</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/tex2007/talks.git</clone_url>
+        </repository>
+        <repository>
+          <id>124</id>
+          <name>tex</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/tex2007/tex.git</clone_url>
+        </repository>
+      </mainlines>
+      <clones type="array">
+      </clones>
+    </repositories>
+  </project>
+  <project>
+    <bugtracker-url nil="true"></bugtracker-url>
+    <created-at type="datetime">2012-09-14T21:51:11Z</created-at>
+    <description>Tex from 2007</description>
+    <home-url nil="true"></home-url>
+    <license>Academic Free License v3.0</license>
+    <mailinglist-url nil="true"></mailinglist-url>
+    <slug>tex2008</slug>
+    <title>Tex2008</title>
+    <wiki-enabled type="boolean">true</wiki-enabled>
+    <owner kind="Team">raetschlab</owner>
+    <repositories type="array">
+      <mainlines type="array">
+        <repository>
+          <id>117</id>
+          <name>talks</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/tex2008/talks.git</clone_url>
+        </repository>
+        <repository>
+          <id>127</id>
+          <name>tex</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/tex2008/tex.git</clone_url>
+        </repository>
+      </mainlines>
+      <clones type="array">
+      </clones>
+    </repositories>
+  </project>
+  <project>
+    <bugtracker-url nil="true"></bugtracker-url>
+    <created-at type="datetime">2012-09-14T21:50:03Z</created-at>
+    <description>Tex from 2009</description>
+    <home-url>http://raetschlab.org</home-url>
+    <license>Academic Free License v3.0</license>
+    <mailinglist-url nil="true"></mailinglist-url>
+    <slug>tex2009</slug>
+    <title>Tex2009</title>
+    <wiki-enabled type="boolean">true</wiki-enabled>
+    <owner kind="Team">raetschlab</owner>
+    <repositories type="array">
+      <mainlines type="array">
+        <repository>
+          <id>115</id>
+          <name>talks</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/tex2009/talks.git</clone_url>
+        </repository>
+        <repository>
+          <id>120</id>
+          <name>talks_mgene</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/tex2009/talks_mgene.git</clone_url>
+        </repository>
+        <repository>
+          <id>121</id>
+          <name>group-overview</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/tex2009/group-overview.git</clone_url>
+        </repository>
+        <repository>
+          <id>128</id>
+          <name>tex</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/tex2009/tex.git</clone_url>
+        </repository>
+      </mainlines>
+      <clones type="array">
+      </clones>
+    </repositories>
+  </project>
+  <project>
+    <bugtracker-url nil="true"></bugtracker-url>
+    <created-at type="datetime">2012-09-14T21:46:39Z</created-at>
+    <description>Tex from 2010</description>
+    <home-url>http://raetschlab.org</home-url>
+    <license>Academic Free License v3.0</license>
+    <mailinglist-url nil="true"></mailinglist-url>
+    <slug>tex2010</slug>
+    <title>Tex2010</title>
+    <wiki-enabled type="boolean">true</wiki-enabled>
+    <owner kind="Team">raetschlab</owner>
+    <repositories type="array">
+      <mainlines type="array">
+        <repository>
+          <id>113</id>
+          <name>talks</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/tex2010/talks.git</clone_url>
+        </repository>
+        <repository>
+          <id>129</id>
+          <name>tex</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/tex2010/tex.git</clone_url>
+        </repository>
+      </mainlines>
+      <clones type="array">
+      </clones>
+    </repositories>
+  </project>
+  <project>
+    <bugtracker-url nil="true"></bugtracker-url>
+    <created-at type="datetime">2012-07-31T15:24:03Z</created-at>
+    <description>The tex projects from 2011</description>
+    <home-url nil="true"></home-url>
+    <license>Academic Free License v3.0</license>
+    <mailinglist-url nil="true"></mailinglist-url>
+    <slug>tex2011</slug>
+    <title>Tex2011</title>
+    <wiki-enabled type="boolean">true</wiki-enabled>
+    <owner kind="Team">raetschlab</owner>
+    <repositories type="array">
+      <mainlines type="array">
+        <repository>
+          <id>111</id>
+          <name>talks</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/tex2011/talks.git</clone_url>
+        </repository>
+        <repository>
+          <id>237</id>
+          <name>a_thaliana_magic</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/tex2011/a_thaliana_magic.git</clone_url>
+        </repository>
+        <repository>
+          <id>239</id>
+          <name>cshl_genome_informatics</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/tex2011/cshl_genome_informatics.git</clone_url>
+        </repository>
+        <repository>
+          <id>241</id>
+          <name>icml</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/tex2011/icml.git</clone_url>
+        </repository>
+        <repository>
+          <id>242</id>
+          <name>ismb11</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/tex2011/ismb11.git</clone_url>
+        </repository>
+        <repository>
+          <id>243</id>
+          <name>nips2011</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/tex2011/nips2011.git</clone_url>
+        </repository>
+        <repository>
+          <id>246</id>
+          <name>palmapper</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/tex2011/palmapper.git</clone_url>
+        </repository>
+        <repository>
+          <id>248</id>
+          <name>plos_genetics_ivanov</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/tex2011/plos_genetics_ivanov.git</clone_url>
+        </repository>
+        <repository>
+          <id>249</id>
+          <name>phd_symposium</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/tex2011/phd_symposium.git</clone_url>
+        </repository>
+        <repository>
+          <id>250</id>
+          <name>saft</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/tex2011/saft.git</clone_url>
+        </repository>
+        <repository>
+          <id>251</id>
+          <name>arts-mtl</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/tex2011/arts-mtl.git</clone_url>
+        </repository>
+        <repository>
+          <id>252</id>
+          <name>mtim</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/tex2011/mtim.git</clone_url>
+        </repository>
+        <repository>
+          <id>253</id>
+          <name>mip</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/tex2011/mip.git</clone_url>
+        </repository>
+        <repository>
+          <id>254</id>
+          <name>rquant</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/tex2011/rquant.git</clone_url>
+        </repository>
+        <repository>
+          <id>255</id>
+          <name>srm-eval</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/tex2011/srm-eval.git</clone_url>
+        </repository>
+        <repository>
+          <id>256</id>
+          <name>rnabiology</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/tex2011/rnabiology.git</clone_url>
+        </repository>
+        <repository>
+          <id>257</id>
+          <name>em-svm</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/tex2011/em-svm.git</clone_url>
+        </repository>
+        <repository>
+          <id>258</id>
+          <name>berlinsummermeeting2011</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/tex2011/berlinsummermeeting2011.git</clone_url>
+        </repository>
+        <repository>
+          <id>259</id>
+          <name>rdiff_genomeinformatics2011</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/tex2011/rdiff_genomeinformatics2011.git</clone_url>
+        </repository>
+        <repository>
+          <id>260</id>
+          <name>rdiff_genomeinformatics2011_again</name>
+          <owner kind="Team">raetschlab</owner>
+          <clone_url>git://git.ratschlab.org/tex2011/rdiff_genomeinformatics2011_again.git</clone_url>
+        </repository>
+      </mainlines>
+      <clones type="array">
+      </clones>
+    </repositories>
+  </project>
+  <project>
+    <bugtracker-url nil="true"></bugtracker-url>
+    <created-at type="datetime">2012-06-18T20:01:50Z</created-at>
+    <description>Sandbox to try around</description>
+    <home-url nil="true"></home-url>
+    <license>Academic Free License v3.0</license>
+    <mailinglist-url nil="true"></mailinglist-url>
+    <slug>sandbox</slug>
+    <title>Sandbox</title>
+    <wiki-enabled type="boolean">true</wiki-enabled>
+    <owner kind="User">akahles</owner>
+    <repositories type="array">
+      <mainlines type="array">
+        <repository>
+          <id>84</id>
+          <name>sandbox</name>
+          <owner kind="User">akahles</owner>
+          <clone_url>git://git.ratschlab.org/sandbox/sandbox.git</clone_url>
+        </repository>
+      </mainlines>
+      <clones type="array">
+        <repository>
+          <id>280</id>
+          <name>poim-sandbox</name>
+          <owner kind="User">ngoernitz</owner>
+          <clone_url>git://git.ratschlab.org/~ngoernitz/sandbox/poim-sandbox.git</clone_url>
+        </repository>
+      </clones>
+    </repositories>
+  </project>
+</projects>
