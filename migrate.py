@@ -9,6 +9,75 @@ import shutil
 import pdb
 import shlex
 import datetime
+import stat
+
+script_dir = os.path.dirname(os.path.abspath(__file__))
+fetch_script = os.path.join(script_dir, 'fetch_branches.sh')
+logfile = open('/cluster/project/raetsch/lab/01/home/starks/git_migrate/log', 'a+', 1)
+
+def del_rw(action, name, exc):
+    os.chmod(name, 0o777)
+    os.remove(name)
+    pass
+
+def add(gitor_repo_url, github_repo_name, test=False, debug=False):
+    tmp_repo_dir = None
+    if test: github_repo_name = 'test_' + github_repo_name
+    try:
+        logfile.write('%s\tInitializing %s\n' %(time(), github_repo_name))
+        github_url = init_github_repo(github_repo_name, debug=debug)
+        logfile.write('%s\tPulling %s\n' %(time(), gitor_repo_url))
+        tmp_repo_dir = pull_gitorious_repo(gitor_repo_url)
+        logfile.write('%s\tJoining %s and %s\n' %(time(), gitor_repo_url, github_url))
+        add_github_remote(tmp_repo_dir, github_url)
+        logfile.write('%s\tJoin successful %s\n' %(time(), gitor_repo_url))
+        if not test: update_projects(github_repo_name)
+    except Exception as e:
+        logfile.write('Error: %s\n' %e)
+    finally:
+        if tmp_repo_dir is not None:
+            if os.getcwd() == tmp_repo_dir: os.chdir(os.path.expanduser('~'))
+            if os.path.exists(tmp_repo_dir):
+                os.system("chmod -R 777 %s" %tmp_repo_dir) # SUPER HACK -- PLEASE SOMEONE HELP
+                shutil.rmtree(tmp_repo_dir)
+    pass
+
+def init_github_repo(reponame, private=True, debug=False, desc=None, gitor_repo_url=None):
+    '''Initializes a repository on github.
+
+    If the repositiory exists or something went wrong ('name' is not in the result json),
+    raises a ValueError
+    '''
+    if desc is None: desc = ''
+    if not gitor_repo_url is None: desc = desc + '\nCloned from %s' %gitor_repo_url
+    init_json = "{\"name\":\"%s\",\"private\":%s,\"description\":\"%s\"}" %(reponame, str(private).lower(), desc)
+    init_cmd = "curl -u %s:%s https://api.github.com/orgs/%s/repos -d '%s'"  %(gituser, token, org, init_json)
+    init_proc = subprocess.Popen(shlex.split(init_cmd), stdout=pipe, stderr=pipe)
+    (stdout, init_stderr) = init_proc.communicate()
+    result = json.loads(stdout)
+    if debug: pdb.set_trace()
+    if not 'name' in result:
+        raise ValueError(result)
+    url = 'git@github.com:%s/%s.git'%(org, reponame)
+    return url
+
+def pull_gitorious_repo(gitor_repo_url):
+    tmp_repo_dir = '/cluster/project/grlab/home/starks/tmp'
+    count = 1
+    if os.path.exists(tmp_repo_dir):
+        tmp_repo_dir_ext = tmp_repo_dir + str(count)
+        while os.path.exists(tmp_repo_dir_ext):
+            count = count + 1
+            tmp_repo_dir_ext = tmp_repo_dir + str(count)
+        tmp_repo_dir = tmp_repo_dir_ext
+    os.makedirs(tmp_repo_dir)
+    gitor_repo_url = format_clone_url(gitor_repo_url)
+    clone_cmd = 'git clone %s %s' %(gitor_repo_url, tmp_repo_dir)
+    clone_proc = subprocess.Popen(shlex.split(clone_cmd), stdout=pipe, stderr=pipe)
+    stdout, clone_stderr = clone_proc.communicate()
+    fetch_all_branches(tmp_repo_dir)
+    assert len(os.listdir(tmp_repo_dir)) > 0, 'Git was not pulled or was empty'
+    return tmp_repo_dir
 
 def extract_gitname(gitdir):
     cdir = os.getcwd()
@@ -29,53 +98,26 @@ def get_all_gitdirs(wdir=None):
     gitdirs = [os.path.dirname(fname) for fname in files.split()]
     return gitdirs
 
-def pull_gitorious_repo(gitor_repo_url):
-    tmp_repo_dir = '/cluster/project/grlab/home/starks/tmp'
-    count = 1
-    if os.path.exists(tmp_repo_dir):
-        tmp_repo_dir_ext = tmp_repo_dir + str(count)
-        while os.path.exists(tmp_repo_dir_ext):
-            count = count + 1
-            tmp_repo_dir_ext = tmp_repo_dir + str(count)
-        tmp_repo_dir = tmp_repo_dir_ext
-    os.makedirs(tmp_repo_dir)
-    clone_cmd = 'git clone %s %s' %(gitor_repo_url, tmp_repo_dir)
-    clone_proc = subprocess.Popen(shlex.split(clone_cmd), stdout=pipe, stderr=pipe)
-    stdout, clone_stderr = clone_proc.communicate()
-    if clone_stderr is not None and clone_stderr.lower().startswith('fatal'):
-        raise ValueError(clone_stderr)
-    fetch_all_branches(tmp_repo_dir)
-    return tmp_repo_dir
-
 def fetch_all_branches(tmp_repo_dir):
+    fetch = subprocess.Popen([fetch_script, tmp_repo_dir], stdout=pipe)
+    pass
+
+def fetch_all_branches_old(tmp_repo_dir):
     cwd = os.getcwd()
     os.chdir(tmp_repo_dir)
     branch = subprocess.Popen(shlex.split("git branch -r"), stdout=pipe)
     grep = subprocess.Popen(shlex.split("grep -v master"), stdin=branch.stdout, stdout=pipe)
-    fetch = subprocess.Popen(shlex.split("while read remote; do git branch --track \"${remote#origin/}\" \"$remote\"; done"), stdin=grep.stdout, stdout=pipe)
+    grep_stdout = grep.communicate()[0]
+    if len(grep_stdout) > 0:
+        fetch_cmd = "while read remote; do git branch --track \"${remote#origin/}\" \"$remote\"; done"
+        fetch = subprocess.Popen(shlex.split(fetch_cmd), stdin=pipe, stdout=pipe)
+        stdout = fetch.communicate(input=grep_stout.strip())[0]
+        fetch.stdout.close()
+    else:
+        stdout = None
     branch.stdout.close()
     grep.stdout.close()
-    stdout = fetch.communicate()[0]
     return stdout
-
-def init_github_repo(reponame, private=True, debug=False, desc=None, gitor_repo_url=None):
-    if desc is None: desc = ''
-    if not gitor_repo_url is None: desc = desc + '\nCloned from %s' %gitor_repo_url
-    init_json = "{\"name\":\"%s\",\"private\":%s,\"description\":\"%s\"}" %(reponame, str(private).lower(), desc)
-    init_cmd = "curl -u %s:%s https://api.github.com/orgs/%s/repos -d '%s'"  %(gituser, token, org, init_json)
-    init_proc = subprocess.Popen(shlex.split(init_cmd), stdout=pipe, stderr=pipe)
-    (stdout, init_stderr) = init_proc.communicate()
-    result = json.loads(stdout)
-    if debug: pdb.set_trace()
-    if not 'name' in result:
-#        try:
-#            message = result['errors'][0]['message']
-#            if message != 'name already exists on this account':
-#                raise ValueError(result)
-#        except KeyError:
-        raise ValueError(result)
-    url = 'git@github.com:%s/%s.git'%(org, reponame)
-    return url
 
 def add_github_remote(repo_dir, repo_url):
     wd = os.getcwd()
@@ -129,39 +171,19 @@ def time():
     now = datetime.datetime.now()
     return str(now)
 
-def test():
-   gitor_repo_url = 'git@git.ratschlab.org:projects2014/patient_representation.git'; tmp_repo_dir = mig.pull_gitorious_repo(gitor_repo_url)
-   # gitor_repo_url = 'git@git.ratschlab.org:migratetest/migratetest.git'; tmp_repo_dir = mig.pull_gitorious_repo(gitor_repo_url)
-   github_repo_name = 'patient_representation_test'; github_url = mig.init_github_repo(github_repo_name)
-   mig.add_github_remote(tmp_repo_dir, github_url)
-
 def update_projects(github_repo_name):
-    index = np.where(projects['repository'] == 'mip')[0]
+    pdb.set_trace()
+    index = np.where(projects['repository'] == github_repo_name)[0]
     assert index.size == 1, "Found a duplicate project name!!"
     index = index[0]
     projects.set_value(index, 'is_added', True)
     pass
 
-def add(gitor_repo_url, github_repo_name):
-    logfile.write('%s\tPulling %s\n' %(time(), gitor_repo_url))
-    tmp_repo_dir = pull_gitorious_repo(gitor_repo_url)
-    try:
-        logfile.write('%s\tInitializing %s\n' %(time(), github_repo_name))
-        github_url = init_github_repo(github_repo_name)
-        logfile.write('%s\tJoining %s and %s\n' %(time(), gitor_repo_url, github_url))
-        add_github_remote(tmp_repo_dir, github_url)
-        logfile.write('%s\tJoin successful %s\n' %(time(), gitor_repo_url))
-        update_projects(github_repo_name)
-    finally:
-        if os.getcwd() == tmp_repo_dir: os.chdir(os.path.expanduser('~'))
-        if os.path.exists(tmp_repo_dir): shutil.rmtree(tmp_repo_dir)
-    pass
-
-def main():
+def main(debug=False):
     repo_info = projects[['clone_url', 'repository']].values
     for indx, (gitor_repo_url, github_repo_name) in enumerate(repo_info):
         print github_repo_name
-        add(gitor_repo_url, github_repo_name)
+        add(gitor_repo_url, github_repo_name, test=True, debug=debug)
         if (indx + 1) % 10 == 0:
             projects.to_csv(projects_path, sep='\t')
 
@@ -184,7 +206,7 @@ dup_mask = np.in1d(projects['repository'], repo_dup_names)
 dups = projects[dup_mask][['repository', 'parent']]
 for indx, (rname, pname) in dups.iterrows():
     if pname.startswith('Tex'):
-        new_name = '%s:%s' %(pname, rname)
+        new_name = '%s-%s' %(pname, rname)
         projects.set_value(indx, 'repository', new_name)
     else:
         continue
@@ -193,7 +215,6 @@ assert np.all(project_counts == 1), "Project names are not unique!"
 if not 'is_updated' in projects.columns:
     projects['is_updated'] = pd.Series(False, index=projects.index)
 projects.to_csv(projects_path, sep='\t')
-logfile = open('/cluster/project/raetsch/lab/01/home/starks/git_migrate/log', 'a+')
 
 if __name__ == '__main__':
     main()
