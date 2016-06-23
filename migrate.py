@@ -33,7 +33,9 @@ def add(gitor_repo_url, github_repo_name, test=False, debug=False):
         logfile.write('%s\tJoin successful %s\n' %(time(), gitor_repo_url))
         if not test: update_projects(github_repo_name)
     except Exception as e:
-        logfile.write('Error: %s\n' %e)
+        message = str(e)
+        message = message.replace(token, '<TOKEN>')
+        logfile.write('Error: %s\n' %message)
     finally:
         if tmp_repo_dir is not None:
             if os.getcwd() == tmp_repo_dir: os.chdir(os.path.expanduser('~'))
