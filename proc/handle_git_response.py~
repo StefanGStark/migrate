@@ -1,0 +1,75 @@
+import os
+import sys
+import json
+import pdb
+
+class RepositoryExists(Exception):
+    def __init__(self, value):
+        self.value = value
+        pass
+
+    def __str__(self):
+        return repr(self.value)
+
+def _error_flag(result):
+    flag = 'documentation_url' in result and 'message' in result or 'errors' in result
+    return flag
+
+def git_pull_response(stdout, stderr=None):
+    '''Handles the output of a git pull call.
+
+    Throws X if something went wrong...
+    Command:
+        git clone REPO_URL LOCAL_PATH
+    Response:
+        https://git-scm.com/docs/git-clone
+    '''
+    tmp_repo_dir = re.findall( "Cloning into '(.*?)'...", msg, re.DOTALL)[0]
+    if not len(os.listdir(tmp_repo_dir)) > 0:
+        raise ValueError('Git was not pulled or was empty')
+    pass
+
+def git_init_response(stdout, stderr=None):
+    '''Handles the output of a git init call.
+
+    Throws ValueError if repository was not initialized.
+    Command:
+        curl -u USER:PASS https://api.github.com/orgs/ORG/repos -d INIT_JSON
+    Response:
+        https://developer.github.com/v3/repos/#create
+    '''
+    result = json.loads(stdout)
+    if _error_flag(result):
+        has_error = 'errors' in result
+        if has_error and 'name already exists on this account' in result['errors']['message']:
+            raise RepositoryExists(result)
+        else:
+            raise ValueError(result)
+    pass
+
+def git_push_response(stdout, stderr=None):
+    '''Handles the output of a git push call.
+
+    Throws X if something went wrong...
+    Command:
+        git push --all REPO_URL
+    Response:
+        https://git-scm.com/docs/git-push
+    '''
+    if stderr is not None and not '[new branch]' in stderr:
+        raise ValueError(stderr)
+    pass
+
+def git_remote_response(stdout, stderr=None):
+    '''Handles the output of a "git remote add" call.
+
+    Throws a ValueError if ...
+    Command:
+        git remote add github REPO_URL
+    Response:
+        https://git-scm.com/docs/git-remote
+    '''
+    if len(stderr) > 0 and not 'remote github already exists' in stderr:
+        raise ValueError(stderr)
+    pass
+
