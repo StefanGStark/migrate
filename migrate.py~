@@ -1,0 +1,249 @@
+import os
+import sys
+import subprocess
+import json
+import re
+import pandas as pd
+import numpy as np
+import shutil
+import pdb
+import shlex
+import datetime
+import stat
+
+script_dir = os.path.dirname(os.path.abspath(__file__))
+from proc import handle_git_response as handle
+
+fetch_script = os.path.join(script_dir, 'fetch_branches.sh')
+logfile = open('/cluster/project/raetsch/lab/01/home/starks/git_migrate/log', 'a+', 1)
+_TMP_REPO_DIR = '/cluster/project/grlab/home/starks/tmp'
+
+gituser ='ratschlab'
+org = 'ratschlab'
+gituser = 'stefangstark'
+org = 'starkstest'
+_TOKEN = get_token(gituser)
+if _TOKEN is None: raise ValueError('Token is missing')
+
+pipe = subprocess.PIPE
+projects_path ='/cluster/project/raetsch/lab/01/home/starks/git_migrate/projects.tsv'
+parent_ignore = ['sandbox']
+
+def del_rw(action, name, exc):
+    '''Super hack to delete a rw directory,
+    '''
+    os.chmod(name, 0o777)
+    os.remove(name)
+    pass
+
+def add(gitor_repo_url, github_repo_name, test=False, debug=False):
+    '''Move a gitorios repository to github.
+
+    Pulls repo from gitorious. Initializes new repository on github. Adds github
+    repository as remote. Pushes new repository. Updates project status (pushed).
+    Removes gitorious repository.
+    '''
+    tmp_repo_dir = None
+    if test: github_repo_name = 'test_' + github_repo_name
+    try:
+        logfile.write('%s\tInitializing %s\n' %(time(), github_repo_name))
+        github_url = init_github_repo(github_repo_name, debug=debug)
+        logfile.write('%s\tPulling %s\n' %(time(), gitor_repo_url))
+        tmp_repo_dir = pull_gitorious_repo(gitor_repo_url)
+        logfile.write('%s\tJoining %s and %s\n' %(time(), gitor_repo_url, github_url))
+        add_github_remote(tmp_repo_dir, github_url)
+        logfile.write('%s\tJoin successful %s\n' %(time(), gitor_repo_url))
+        push_github_remote(tmp_repo_dir, github_url)
+        logfile.write('%s\tPush successful %s\n' %(time(), gitor_repo_url))
+        if not test: update_projects(github_repo_name)
+    except Exception as e:
+        message = str(e)
+        message = message.replace(_TOKEN, '<TOKEN>')
+        logfile.write('Error: %s\n' %message)
+    finally:
+        # always remove the tmp dir
+        if tmp_repo_dir is not None:
+            if os.getcwd() == tmp_repo_dir: os.chdir(os.path.expanduser('~'))
+            if os.path.exists(tmp_repo_dir):
+                os.system("chmod -R 777 %s" %tmp_repo_dir) # SUPER HACK -- PLEASE SOMEONE HELP
+                shutil.rmtree(tmp_repo_dir)
+    pass
+
+def init_github_repo(reponame, private=True, debug=False, desc=None, gitor_repo_url=None):
+    '''Initializes a repository on github.
+
+    If the repositiory exists or something went wrong ('name' is not in the result json),
+    raises a ValueError.
+    '''
+    if desc is None: desc = ''
+    if not gitor_repo_url is None:
+        cloned_text = 'Cloned from %s' %gitor_repo_url
+        if len(desc) > 0 and desc[-1] != '\n':
+            desc = desc + '\n' + cloned_text
+        else:
+            desc = desc + cloned_text
+    init_json = "{\"name\":\"%s\",\"private\":%s,\"description\":\"%s\"}" %(reponame, str(private).lower(), desc)
+    init_cmd = "curl -u %s:%s https://api.github.com/orgs/%s/repos -d '%s'"  %(gituser, _TOKEN, org, init_json)
+    init_proc = subprocess.Popen(shlex.split(init_cmd), stdout=pipe, stderr=pipe)
+    (stdout, stderr) = init_proc.communicate()
+    handle.git_init_response(stdout, stderr)
+    url = 'git@github.com:%s/%s.git'%(org, reponame)
+    return url
+
+def pull_gitorious_repo(gitor_repo_url):
+    '''Pulls the gitorious repository into a tmp directory
+    '''
+    count = 0
+    if os.path.exists(_TMP_REPO_DIR):
+        _TMP_REPO_DIR_ext = tmp_repo_dir + str(count)
+        while os.path.exists(_TMP_REPO_DIR_ext):
+            count = count + 1
+            _TMP_REPO_DIR_ext = tmp_repo_dir + str(count)
+        _TMP_REPO_DIR = tmp_repo_dir_ext
+    os.makedirs(_TMP_REPO_DIR)
+    gitor_repo_url = format_clone_url(gitor_repo_url)
+    clone_cmd = 'git clone %s %s' %(gitor_repo_url, _TMP_REPO_DIR)
+    clone_proc = subprocess.Popen(shlex.split(clone_cmd), stdout=pipe, stderr=pipe)
+    stdout, stderr = clone_proc.communicate()
+    fetch_all_branches(_TMP_REPO_DIR)
+    handle.git_pull_response(stdout, stderr)
+    return _TMP_REPO_DIR
+
+def add_github_remote(repo_dir, repo_url):
+    '''Adds the github repository to the gitorious clone.
+    '''
+    wd = os.getcwd()
+    os.chdir(repo_dir)
+    add = 'git remote add github %s'%repo_url
+    addproc = subprocess.Popen(shlex.split(add), stdout=pipe, stderr=pipe)
+    (stdout, add_stderr) = addproc.communicate()
+    try:
+        handle.git_remote_response(stdout, add_stderr)
+    finally:
+        os.chdir(wd)
+    pass
+
+def push_github_remote(repo_dir, repo_url):
+    '''Pushes the repository to github.
+    '''
+    wd = os.getcwd()
+    os.chdir(repo_dir)
+    repo_url = re.sub('^git@', '', repo_url)
+    repo_url = re.sub('github.com:', 'github.com/', repo_url)
+    repo_https_url = 'https://%s@%s' %(_TOKEN, repo_url)
+    push = 'git push --all %s'%repo_https_url
+    pushproc = subprocess.Popen(shlex.split(push), stdout=pipe, stderr=pipe)
+    (stdout, push_stderr) = pushproc.communicate()
+    try:
+        handle.git_push_response(stdout, push_stderr)
+    finally:
+        os.chdir(wd)
+    pass
+
+def get_all_gitdirs(wdir=None):
+    if wdir is None: wdir = '/cluster/project/raetsch/lab/01/home/starks/rgit'
+    cmd = 'find %s -name *.git' %wdir
+    files, stderr = subprocess.Popen(shlex.split(cmd), stdout=subprocess.PIPE).communicate()
+    gitdirs = [os.path.dirname(fname) for fname in files.split()]
+    return gitdirs
+
+def fetch_all_branches(tmp_repo_dir):
+    fetch = subprocess.Popen([fetch_script, tmp_repo_dir], stdout=pipe)
+    pass
+
+def fetch_all_branches_old(tmp_repo_dir):
+    cwd = os.getcwd()
+    os.chdir(tmp_repo_dir)
+    branch = subprocess.Popen(shlex.split("git branch -r"), stdout=pipe)
+    grep = subprocess.Popen(shlex.split("grep -v master"), stdin=branch.stdout, stdout=pipe)
+    grep_stdout = grep.communicate()[0]
+    if len(grep_stdout) > 0:
+        fetch_cmd = "while read remote; do git branch --track \"${remote#origin/}\" \"$remote\"; done"
+        fetch = subprocess.Popen(shlex.split(fetch_cmd), stdin=pipe, stdout=pipe)
+        stdout = fetch.communicate(input=grep_stout.strip())[0]
+        fetch.stdout.close()
+    else:
+        stdout = None
+    branch.stdout.close()
+    grep.stdout.close()
+    return stdout
+
+def process_one_repo(gitor_repo_url, github_repo_name, private=True):
+    tmp_repo_dir = pull_gitorious_repo(gitor_repo_url)
+    github_url = init_github_repo(github_repo_name, private=private)
+    add_github_remote(tmp_repo_dir, github_url)
+    pass
+
+def format_clone_url(clone_url):
+    clone_url = clone_url.replace('git.ratschlab.org/', 'git.ratschlab.org:')
+    clone_url = re.sub('^git://', '', clone_url)
+    if not clone_url.startswith('git@'):
+        clone_url = 'git@%s'%clone_url
+    return clone_url
+
+def get_token(gituser):
+    path = '/cluster/project/raetsch/lab/01/home/starks/.github.oauth'
+    token = None
+    for line in open(path, 'r'):
+        if line.startswith('#'): continue
+        if line.split()[0].lower() == gituser.lower(): token = line.split()[1]
+    return token
+
+def delete_repository(github_repo_name, orgs=None, tkn=None):
+    if tkn is None: tkn = _TOKEN
+    if orgs is None: orgs = org
+    cmd = "curl -X DELETE -H 'Authorization: token %s' https://api.github.com/repos/%s/%s" %(tkn, orgs, github_repo_name)
+    return cmd
+
+def time():
+    now = datetime.datetime.now()
+    return str(now)
+
+def update_projects(github_repo_name):
+    index = np.where(projects['repository'] == github_repo_name)[0]
+    assert index.size == 1, "Found a duplicate project name!!"
+    index = index[0]
+    projects.set_value(index, 'is_updated', True)
+    pass
+
+def main(debug=False, test=False):
+    repo_info = projects[['clone_url', 'repository']].values
+    for indx, (gitor_repo_url, github_repo_name) in enumerate(repo_info):
+        print github_repo_name
+        add(gitor_repo_url, github_repo_name, test=False, debug=debug)
+        if (indx + 1) % 10 == 0:
+            projects.to_csv(projects_path, sep='\t')
+    pass
+
+def list_repos(run_cmd=True):
+    list_cmd = 'curl -u %s:%s https://api.github.com/orgs/%s/repos' %(gituser, _TOKEN, org)
+    if run_cmd:
+        cmd_proc = subprocess.Popen(shlex.split(list_cmd), stdout=pipe, stderr=pipe)
+        (stdout, list_stderr) = cmd_proc.communicate()
+        data = json.loads(stdout)
+        return data
+    return list_cmd
+
+def _load_projects(projects_path, parent_ignore):
+    projects = pd.read_csv(projects_path, sep='\t')
+    projects.set_index('id', inplace=True)
+    repo_names, repo_counts = np.unique(projects['repository'], return_counts=True)
+    repo_dup_names = repo_names[repo_counts > 1]
+    dup_mask = np.in1d(projects['repository'], repo_dup_names)
+    dups = projects[dup_mask][['repository', 'parent']]
+    for indx, (rname, pname) in dups.iterrows():
+        if pname.startswith('Tex'):
+            new_name = '%s-%s' %(pname, rname)
+            projects.set_value(indx, 'repository', new_name)
+        else:
+            continue
+    _, project_counts = np.unique(projects['repository'].values, return_counts=True)
+    assert np.all(project_counts == 1), "Project names are not unique!"
+    if not 'is_updated' in projects.columns:
+        projects['is_updated'] = pd.Series(False, index=projects.index)
+    projects.to_csv(projects_path, sep='\t')
+    return projects
+
+projects = _load_projects(projects_path, parent_ignore)
+if __name__ == '__main__':
+    main()

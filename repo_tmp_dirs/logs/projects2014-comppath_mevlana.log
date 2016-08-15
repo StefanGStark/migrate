@@ -1,0 +1,184 @@
+> ./AUTHORS.md
+> ./AutoEncoders
+> ./AutoEncoders/Auto
+> ./AutoEncoders/Autoencoders.py
+> ./AutoEncoders/Conv
+> ./AutoEncoders/Conv/ConvAutoencoders.py
+> ./AutoEncoders/DeepAutoencoder.obj
+> ./AutoEncoders/e1.png0.png
+> ./AutoEncoders/e2.png-OutputW.png
+> ./AutoEncoders/EncodedFilters0.png
+> ./AutoEncoders/EncodedFilters-OutputW.png
+> ./AutoEncoders/MaxActivations.png
+> ./AutoEncoders/theta
+> ./AutoEncoders/theta1
+> ./AutoEncoders/theta2
+> ./AutoEncoders/Weights.png
+> ./contributors.txt
+> ./DataStatistics.py
+> ./Depreciated
+> ./Depreciated/ConvAutoencoders.py
+> ./Depreciated/ConvAutoencodersTheano.py
+> ./Depreciated/DataStatistics.py
+> ./Depreciated/DataStatsPreproc.ipynb
+> ./Depreciated/ExtractFeaturesDEBUG.py
+> ./Depreciated/ExtractionStats.py
+> ./Depreciated/ExtractPatchesBACKUP.py
+> ./Depreciated/ExtractPatches.py
+> ./Depreciated/ExtractPatchesWhiten.py
+> ./Depreciated/Job24.sh
+> ./Depreciated/parseSegChalMasks.py
+> ./Depreciated/runFuncM2.py
+> ./Depreciated/SCDAE2.py
+> ./Depreciated/Stage1Pipeline.py
+> ./Depreciated/StageMNIST2.py
+> ./Learning.py
+> ./LICENSE.md
+> ./openslideInstructForCluster.txt
+> ./Optima.ttc
+> ./Other Code
+> ./Other Code/contributors.txt
+> ./Other Code/DataStatistics.py
+> ./Other Code/DataStatsPreproc.ipynb
+> ./Other Code/ExtractFeaturesDEBUG.py
+> ./Other Code/ExtractionStats.py
+> ./Other Code/ExtractPatchesBACKUP.py
+> ./Other Code/ExtractPatches.py
+> ./Other Code/ExtractPatchesWhiten.py
+> ./Other Code/Job24.sh
+> ./Other Code/Learning.py
+> ./Other Code/parseSegChalMasks.py
+> ./Other Code/runFunc.py
+> ./Other Code/Stage1PipelineFin.py
+> ./Other Code/Stage1Pipeline.py
+> ./Other Code/Utilities.py
+> ./plot_results.py
+> ./README.md
+> ./runFunc5.py
+> ./runFuncMturk.py
+> ./runFunc.py
+> ./SCDAE.py
+> ./StackedCDAE2.py
+> ./StackedCDAE3.py
+> ./StackedCDAE.py
+> ./Stage1PipelineFin.py
+> ./Stage2Pipeline.py
+> ./Stage3Conv.py
+> ./Stage5.py
+> ./Stage6.py
+> ./tex
+> ./tex/Im
+> ./tex/Im/500MPP.png
+> ./tex/Im/AEField.png
+> ./tex/Im/autofield.png
+> ./tex/Im/batchCov.png
+> ./tex/Im/blah.png
+> ./tex/Im/ColorDec
+> ./tex/Im/ColorDec/1_BW_CDImageChannel1.png
+> ./tex/Im/ColorDec/1_BW_CDImageChannel2.png
+> ./tex/Im/ColorDec/1_BW_CDImageChannel3.png
+> ./tex/Im/ColorDec/1_CDImageChannel1.png
+> ./tex/Im/ColorDec/1_CDImageChannel2.png
+> ./tex/Im/ColorDec/1_CDImageChannel3.png
+> ./tex/Im/ColorDec/1_CDImage.png
+> ./tex/Im/ColorDec1.png
+> ./tex/Im/ColorDec/2_BW_CDImageChannel1.png
+> ./tex/Im/ColorDec/2_BW_CDImageChannel2.png
+> ./tex/Im/ColorDec/2_BW_CDImageChannel3.png
+> ./tex/Im/ColorDec/2_CDImageChannel1.png
+> ./tex/Im/ColorDec/2_CDImageChannel2.png
+> ./tex/Im/ColorDec/2_CDImageChannel3.png
+> ./tex/Im/ColorDec/2_CDImage.png
+> ./tex/Im/ColorDec2.png
+> ./tex/Im/ColorDec/3_BW_CDImageChannel1.png
+> ./tex/Im/ColorDec/3_BW_CDImageChannel2.png
+> ./tex/Im/ColorDec/3_BW_CDImageChannel3.png
+> ./tex/Im/ColorDec/3_CDImageChannel1.png
+> ./tex/Im/ColorDec/3_CDImageChannel2.png
+> ./tex/Im/ColorDec/3_CDImageChannel3.png
+> ./tex/Im/ColorDec/3_CDImage.png
+> ./tex/Im/ColorDec/ColorImage.png
+> ./tex/Im/ColorImage2.png
+> ./tex/Im/ColorImage.png
+> ./tex/Im/ConsensusAE.xcf
+> ./tex/Im/denoising.png
+> ./tex/Im/expKLDamped.pdf
+> ./tex/Im/expKLDamped.png
+> ./tex/Im/expKL.pdf
+> ./tex/Im/expKL.png
+> ./tex/Im/FeatZoom1
+> ./tex/Im/FeatZoom1/Class0ImportantFeat.png
+> ./tex/Im/FeatZoom1/Class1ImportantFeat.png
+> ./tex/Im/FeatZoom2
+> ./tex/Im/FeatZoom2/Class0ImportantFeat.png
+> ./tex/Im/FeatZoom2/Class1ImportantFeat.png
+> ./tex/Im/FeatZoom4
+> ./tex/Im/FeatZoom4/Class0ImportantFeat.png
+> ./tex/Im/FeatZoom4/Class1ImportantFeat.png
+> ./tex/Im/FeatZoom8
+> ./tex/Im/FeatZoom8/Class0ImportantFeat.png
+> ./tex/Im/FeatZoom8/Class1ImportantFeat.png
+> ./tex/Im/fieldAutoen (3).pdf
+> ./tex/Im/fieldAutoen (4).png
+> ./tex/Im/fieldAutoen.pdf
+> ./tex/Im/IMG_20140812_172252.jpg
+> ./tex/Im/IMG_20140829_185728.jpg
+> ./tex/Im/KMeansFiltersFreq_ZoomL_1.png
+> ./tex/Im/KMeansFiltersFreq_ZoomL_2.png
+> ./tex/Im/KMeansFiltersFreq_ZoomL_4.png
+> ./tex/Im/KMeansFiltersFreq_ZoomL_8.png
+> ./tex/Im/KMeansFiltersHist_ZoomL_1.png
+> ./tex/Im/KMeansFiltersHist_ZoomL_2.png
+> ./tex/Im/KMeansFiltersHist_ZoomL_4.png
+> ./tex/Im/KMeansFiltersHist_ZoomL_8.png
+> ./tex/Im/KMeansFiltersVarHist_ZoomL_1.png
+> ./tex/Im/KMeansFiltersVarHist_ZoomL_2.png
+> ./tex/Im/KMeansFiltersVarHist_ZoomL_4.png
+> ./tex/Im/KMeansFiltersVarHist_ZoomL_8.png
+> ./tex/Im/KMeansFilters_ZoomL_1_onepass.png
+> ./tex/Im/KMeansFilters_ZoomL_1.png
+> ./tex/Im/KMeansFilters_ZoomL_2_onepass.png
+> ./tex/Im/KMeansFilters_ZoomL_2.png
+> ./tex/Im/KMeansFilters_ZoomL_4_onepass.png
+> ./tex/Im/KMeansFilters_ZoomL_4.png
+> ./tex/Im/KMeansFilters_ZoomL_8_onepass.png
+> ./tex/Im/KMeansFilters_ZoomL_8.png
+> ./tex/Im/KMeansVarsPixel_ZoomL_1.png
+> ./tex/Im/KMeansVarsPixel_ZoomL_2.png
+> ./tex/Im/KMeansVarsPixel_ZoomL_4.png
+> ./tex/Im/KMeansVarsPixel_ZoomL_8.png
+> ./tex/Im/KMeansVars_ZoomL_1_onepass.png
+> ./tex/Im/KMeansVars_ZoomL_1.png
+> ./tex/Im/KMeansVars_ZoomL_2_onepass.png
+> ./tex/Im/KMeansVars_ZoomL_2.png
+> ./tex/Im/KMeansVars_ZoomL_4_onepass.png
+> ./tex/Im/KMeansVars_ZoomL_4.png
+> ./tex/Im/KMeansVars_ZoomL_8_onepass.png
+> ./tex/Im/KMeansVars_ZoomL_8.png
+> ./tex/Im/OnlineBatchWhitened.png
+> ./tex/Im/RawvsSmooth.png
+> ./tex/Im/replacement.png
+> ./tex/Im/replacement.xcf
+> ./tex/Im/Scales.png
+> ./tex/Im/TCGA-06-0166-01Z-00-DX3_CompMask.png
+> ./tex/Im/TCGA-06-0166-01Z-00-DX3_plocs.png
+> ./tex/Im/TCGA-06-0166-01Z-00-DX3_ZoomedOut.png
+> ./tex/Im/TCGA-DU-8167-01Z-00-DX1_CompMask.png
+> ./tex/Im/TCGA-DU-8167-01Z-00-DX1_plocs.png
+> ./tex/Im/TCGA-DU-8167-01Z-00-DX1_ZoomedOut.png
+> ./tex/references.bib
+> ./tex/Tech.aux
+> ./tex/Tech.bbl
+> ./tex/Tech.blg
+> ./tex/Tech.log
+> ./tex/Tech.out
+> ./tex/Tech.pdf
+> ./tex/Tech.synctex.gz
+> ./tex/Tech.tex
+> ./tex/texput.log
+> ./TSNE
+> ./TSNE/calc_tsne.py
+> ./TSNE/tSNE_linux
+> ./TSNE/tsne.py
+> ./Utilities.py
+> ./vibe_api_ex.py

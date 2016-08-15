@@ -22,12 +22,15 @@ def _get_token(gituser):
 
 
 fetch_script = os.path.join(script_dir, 'fetch_branches.sh')
-logfile = sys.stdout
-#logfile = open('/cluster/project/raetsch/lab/01/home/starks/git_migrate/log', 'a+', 1)
+comp_dir_script = os.path.join(script_dir, 'comp_dirs.sh')
+#logfile = sys.stdout
+logfile = open('/cluster/project/raetsch/lab/01/home/starks/git_migrate/log', 'a+', 1)
 _TMP_REPO_DIR = '/cluster/project/raetsch/lab/01/home/starks/git_migrate/repo_tmp_dirs'
 _TMP_GITOR_BASE = os.path.join(_TMP_REPO_DIR, 'gitor_tmp')
 _TMP_GITHUB_BASE = os.path.join(_TMP_REPO_DIR, 'github_tmp')
 if not os.path.exists(_TMP_REPO_DIR): os.makedirs(_TMP_REPO_DIR)
+
+_CONFIRMED_FINISHED_COL = 'confirmed_finished'
 
 gituser ='ratschlab'
 ORG = 'ratschlab'
@@ -44,6 +47,26 @@ pipe = subprocess.PIPE
 projects_path ='/cluster/project/raetsch/lab/01/home/starks/git_migrate/projects.tsv'
 parent_ignore = ['sandbox']
 
+def _load_projects(projects_path, parent_ignore):
+    projects = pd.read_csv(projects_path, sep='\t')
+    projects.set_index('id', inplace=True)
+    repo_names, repo_counts = np.unique(projects['repository'], return_counts=True)
+    repo_dup_names = repo_names[repo_counts > 1]
+    dup_mask = np.in1d(projects['repository'], repo_dup_names)
+    dups = projects[dup_mask][['repository', 'parent']]
+    for indx, (rname, pname) in dups.iterrows():
+        if pname.startswith('Tex'):
+            new_name = '%s-%s' %(pname, rname)
+            projects.set_value(indx, 'repository', new_name)
+        else:
+            continue
+    _, project_counts = np.unique(projects['repository'].values, return_counts=True)
+    assert np.all(project_counts == 1), "Project names are not unique!"
+    if not 'is_updated' in projects.columns:
+        projects['is_updated'] = pd.Series(False, index=projects.index)
+    projects.to_csv(projects_path, sep='\t')
+    return projects
+
 projects = _load_projects(projects_path, parent_ignore)
 
 def del_rw(name):
@@ -53,41 +76,59 @@ def del_rw(name):
     shutil.rmtree(name)
     pass
 
-def add(gitor_repo_url, github_repo_name, test=False, debug=False):
+def _write_to_log(msg):
+    msg = msg.replace(_TOKEN, '<TOKEN>')
+    logfile.write('%s\t%s' %(time(), msg))
+    pass
+
+
+def add(gitor_repo_url, github_repo_name, test=False):
     '''Move a gitorios repository to github.
 
     Pulls repo from gitorious. Initializes new repository on github. Adds github
     repository as remote. Pushes new repository. Updates project status (pushed).
     Removes gitorious repository.
+
+    Commands:
+        Initialize github repository:
+             curl -u $USR:$TKN https://api.github.com/orgs/%s/repos \\
+                 -d {"name":"$REPONAME","private":true, "description":"$REPODESC"}
+        Pull gitor repo:
+            git clone $GITOR_URL $GITOR_REPO_DIR
+        Add remote to gitor repo:
+            git remote ad github $GITHUB_URL
+        Push github repo:
+            git push --all https://$TKN@github.com/$GITHUB_NAME
     '''
     tmp_repo_dir = None
     if test: github_repo_name = 'TEST-' + github_repo_name
     try:
-        logfile.write('%s\tInitializing %s\n' %(time(), github_repo_name))
-        github_url = init_github_repo(github_repo_name, debug=debug)
-        logfile.write('%s\tPulling %s\n' %(time(), gitor_repo_url))
-        tmp_repo_dir = pull_gitorious_repo(gitor_repo_url, debug=debug)
-        logfile.write('%s\tJoining %s and %s\n' %(time(), gitor_repo_url, github_url))
-        add_github_remote(tmp_repo_dir, github_url, debug=debug)
-        logfile.write('%s\tJoin successful %s\n' %(time(), gitor_repo_url))
-        push_github_remote(tmp_repo_dir, github_url, debug)
-        logfile.write('%s\tPush successful %s\n' %(time(), gitor_repo_url))
+        _write_to_log('Initializing %s\n' %(github_repo_name))
+        github_url = init_github_repo(github_repo_name)
+        _write_to_log('Pulling %s\n' %(gitor_repo_url))
+        tmp_repo_dir = pull_gitorious_repo(gitor_repo_url)
+        _write_to_log('Joining %s and %s\n' %(gitor_repo_url, github_url))
+        add_github_remote(tmp_repo_dir, github_url)
+        _write_to_log('Join successful %s\n' %(gitor_repo_url))
+        push_github_remote(tmp_repo_dir, github_url)
+        _write_to_log('Push successful %s\n' %(gitor_repo_url))
         if test:
             github_repo_name = re.sub('^TEST-', '', github_repo_name)
         update_projects(github_repo_name)
-#    except Exception as e:
-#        message = str(e)
-#        message = message.replace(_TOKEN, '<TOKEN>')
-#        logfile.write('ERROR: %s\n' %message)
+    except Exception as e:
+        message = str(e)
+        message = message.replace(_TOKEN, '<TOKEN>')
+        _write_to_log('ERROR: %s\n' %message)
     finally:
         # always remove the tmp dir
         if tmp_repo_dir is not None:
             if os.getcwd() == tmp_repo_dir: os.chdir(os.path.expanduser('~'))
             if os.path.exists(tmp_repo_dir):
                 del_rw(tmp_repo_dir)
+        projects.to_csv(projects_path, sep='\t')
     pass
 
-def init_github_repo(reponame, private=True, debug=False, desc=None, gitor_repo_url=None):
+def init_github_repo(reponame, private=True, desc=None, gitor_repo_url=None):
     '''Initializes a repository on github.
 
     If the repositiory exists or something went wrong ('name' is not in the result json),
@@ -95,7 +136,7 @@ def init_github_repo(reponame, private=True, debug=False, desc=None, gitor_repo_
     '''
     repo_delim = '-'
     _test_tag = 'TEST%s' %repo_delim
-    url = _name_github_url(reponame)
+    github_url = _name_github_url(reponame)
     if desc is None: desc = list()
     if not gitor_repo_url is None:
         cloned_text = 'Cloned from %s' %gitor_repo_url
@@ -107,21 +148,24 @@ def init_github_repo(reponame, private=True, debug=False, desc=None, gitor_repo_
     desc = '\n'.join(desc)
     init_json = "{\"name\":\"%s\",\"private\":%s,\"description\":\"%s\"}" %(reponame, str(private).lower(), desc)
     init_cmd = "curl -u %s:%s https://api.github.com/orgs/%s/repos -d '%s'"  %(gituser, _TOKEN, ORG, init_json)
+    _write_to_log('\tCOMMAND: ' + init_cmd + '\n')
     init_proc = subprocess.Popen(shlex.split(init_cmd), stdout=pipe, stderr=pipe)
     (stdout, stderr) = init_proc.communicate()
-    handle_git_init_response(url, init_proc, stdout, stderr, debug=debug)
-    return url
+    handle_git_init_response(github_url, init_proc, stdout, stderr)
+    return github_url
 
-def _name_github_url(url):
+def _name_github_url(url, test_name=False):
     if not url.startswith('git@github.com'):
+        if test_name:
+            url = 'TEST-' + url
         url = 'git@github.com:%s/%s'%(ORG, url)
     if not url.endswith('.git'):
         url = url + '.git'
     return url
 
-def _format_github_url_with_token(github_repo_url):
+def _format_github_url_with_token(github_repo_url, test_name=False):
     if not 'github.com' in github_repo_url or ORG in github_repo_url:
-        github_repo_url = _name_github_url(github_repo_url)
+        github_repo_url = _name_github_url(github_repo_url, test_name)
     if not github_repo_url.startswith('https'):
         github_repo_url = github_repo_url.split('@')[-1]
         github_repo_url = re.sub(':', '/', github_repo_url)
@@ -148,20 +192,23 @@ def github_repo_is_empty(github_repo_url, cleanup=False):
     del_rw(tmp_github_dir)
     return is_empty
 
-def pull_github_repo(github_repo_url, with_token=True):
+def pull_github_repo(github_repo_url, with_token=True, test_name=False, dirname=None):
+    if dirname is None: dirname = _TMP_GITHUB_BASE
     if with_token:
-        github_repo_url = _format_github_url_with_token(github_repo_url)
-    return pull_repo(github_repo_url, _TMP_GITHUB_BASE)
+        github_repo_url = _format_github_url_with_token(github_repo_url, test_name=test_name)
+    return pull_repo(github_repo_url, dirname)
 
-def pull_gitorious_repo(gitor_repo_url):
+def pull_gitorious_repo(gitor_repo_url, dirname=None):
+    if dirname is None: dirname = _TMP_GITOR_BASE
     gitor_repo_url = format_clone_url(gitor_repo_url)
-    return pull_repo(gitor_repo_url, _TMP_GITOR_BASE)
+    return pull_repo(gitor_repo_url, dirname)
 
 def pull_repo(repo_url, tmp_repo_base):
     '''Pulls repository into a tmp directory.
     '''
     tmp_repo_dir = _initialize_tmp_dir(tmp_repo_base)
     clone_cmd = 'git clone %s %s' %(repo_url, tmp_repo_dir)
+    _write_to_log('\tCOMMAND: ' + clone_cmd + '\n')
     clone_proc = subprocess.Popen(shlex.split(clone_cmd), stdout=pipe, stderr=pipe)
     stdout, stderr = clone_proc.communicate()
     handle_generic_git_call(clone_proc, stdout, stderr)
@@ -174,8 +221,9 @@ def add_github_remote(repo_dir, repo_url):
     '''
     wd = os.getcwd()
     os.chdir(repo_dir)
-    add = 'git remote add github %s'%repo_url
-    addproc = subprocess.Popen(shlex.split(add), stdout=pipe, stderr=pipe)
+    add_cmd = 'git remote add github %s'%repo_url
+    _write_to_log('\tCOMMAND: ' + add_cmd + '\n')
+    addproc = subprocess.Popen(shlex.split(add_cmd), stdout=pipe, stderr=pipe)
     (stdout, add_stderr) = addproc.communicate()
     try:
         handle_generic_git_call(addproc, stdout, add_stderr)
@@ -191,8 +239,9 @@ def push_github_remote(repo_dir, repo_url):
     repo_url = re.sub('^git@', '', repo_url)
     repo_url = re.sub('github.com:', 'github.com/', repo_url)
     repo_https_url = 'https://%s@%s' %(_TOKEN, repo_url)
-    push = 'git push --all %s'%repo_https_url
-    pushproc = subprocess.Popen(shlex.split(push), stdout=pipe, stderr=pipe)
+    push_cmd = 'git push --all %s'%repo_https_url
+    _write_to_log('\tCOMMAND: ' + push_cmd + '\n')
+    pushproc = subprocess.Popen(shlex.split(push_cmd), stdout=pipe, stderr=pipe)
     (stdout, push_stderr) = pushproc.communicate()
     try:
         handle_generic_git_call(pushproc, stdout, push_stderr)
@@ -246,14 +295,12 @@ def update_projects(github_repo_name):
     projects.loc[index, 'is_updated'] = True
     pass
 
-def main(debug=False, test=True):
+def main(test=True):
     repo_info = projects[['clone_url', 'repository']].values
     for indx, (gitor_repo_url, github_repo_name) in enumerate(repo_info):
         if project_is_updated(github_repo_name): continue
         print github_repo_name
-        add(gitor_repo_url, github_repo_name, test=test, debug=debug)
-        if (indx + 1) % 10 == 0:
-            projects.to_csv(projects_path, sep='\t')
+        add(gitor_repo_url, github_repo_name, test=test)
     pass
 
 def project_is_updated(repo_name):
@@ -271,25 +318,6 @@ def list_repos(run_cmd=True):
         return data
     return list_cmd
 
-def _load_projects(projects_path, parent_ignore):
-    projects = pd.read_csv(projects_path, sep='\t')
-    projects.set_index('id', inplace=True)
-    repo_names, repo_counts = np.unique(projects['repository'], return_counts=True)
-    repo_dup_names = repo_names[repo_counts > 1]
-    dup_mask = np.in1d(projects['repository'], repo_dup_names)
-    dups = projects[dup_mask][['repository', 'parent']]
-    for indx, (rname, pname) in dups.iterrows():
-        if pname.startswith('Tex'):
-            new_name = '%s-%s' %(pname, rname)
-            projects.set_value(indx, 'repository', new_name)
-        else:
-            continue
-    _, project_counts = np.unique(projects['repository'].values, return_counts=True)
-    assert np.all(project_counts == 1), "Project names are not unique!"
-    if not 'is_updated' in projects.columns:
-        projects['is_updated'] = pd.Series(False, index=projects.index)
-    projects.to_csv(projects_path, sep='\t')
-    return projects
 
 class RepositoryExists(Exception):
     def __init__(self, value):
@@ -299,11 +327,19 @@ class RepositoryExists(Exception):
     def __str__(self):
         return repr(self.value)
 
+class RepositoriesSame(Exception):
+    def __init__(self, value):
+        self.value = value
+        pass
+
+    def __str(self):
+        return repr(self.value)
+
 def _error_flag(result):
     flag = 'documentation_url' in result and 'message' in result or 'errors' in result
     return flag
 
-def handle_generic_git_call(proc, stdout=None, stderr=None, debug=False):
+def handle_generic_git_call(proc, stdout=None, stderr=None):
     '''Handle the output of a git command, e.g. git pull ...
     '''
     if proc.returncode < 0:
@@ -315,7 +351,7 @@ def handle_generic_git_call(proc, stdout=None, stderr=None, debug=False):
         raise ValueError('git command failed')
     pass
 
-def handle_git_init_response(github_url, proc, stdout, stderr=None, debug=False):
+def handle_git_init_response(github_url, proc, stdout, stderr=None):
     '''Handles the output of a repositoty init call from the git API.
 
     Throws ValueError if repository was not initialized.
@@ -333,9 +369,118 @@ def handle_git_init_response(github_url, proc, stdout, stderr=None, debug=False)
         if has_error and exit_msg in result['errors'][0]['message']:
             if not github_repo_is_empty(github_url):
                 raise RepositryExists(github_url)
+            else:
+                _write_to_log('repository was initialized, but was empty\n') 
         else:
             raise ValueError(result)
     pass
+
+def gitor_and_github_are_same(gitor_tmp_dir, github_repo_name):
+    github_tmp_dir = pull_github_repo(github_repo_name)
+    res = _dir_are_same(gitor_tmp_dir, github_tmp_dir)
+    return res
+
+def _filter_diff_stdout(stdout):
+    filter_stdout = list()
+    for line in stdout.splitlines():
+        if not re.match('^[><]', line): continue
+        if re.match('^[><] ./.git', line): continue
+        filter_stdout.append(line)
+    filter_stdout = '\n'.join(filter_stdout)
+    return filter_stdout
+
+def _dir_are_same(dira, dirb, ret_output=False):
+    fetch = subprocess.Popen([comp_dir_script, dira, dirb], stdout=pipe, stderr=pipe)
+    stdout, stderr = fetch.communicate()
+    stdout = _filter_diff_stdout(stdout)
+    assert len(stderr) == 0
+    res = len(stdout) == 0
+    if ret_output:
+        return res, stdout, stderr
+    return len(stdout) == 0
+
+def _add_conf_col():
+    projects[_CONFIRMED_FINISHED_COL] = pd.Series(None, index=projects.index)
+    pass
+
+def _check_single_repo(github_repo_name, gitor_repo_url, ret_diff_output=True):
+    try:
+        github_dir = pull_github_repo(github_repo_name, test_name=True)
+        gitor_dir = pull_gitorious_repo(gitor_repo_url)
+        res = _dir_are_same(github_dir, gitor_dir, ret_output=True)
+    finally:
+        del_rw(github_dir)
+        del_rw(gitor_dir)
+    return res
+
+def get_repo_info(index=None):
+    if index is None: index = np.random.randint(projects.shape[0])
+    row = projects.iloc[index]
+    github_repo_name = row['repository']
+    gitor_repo_url = row['clone_url']
+    return github_repo_name, gitor_repo_url
+
+def check_results():
+    failures = list()
+    if not _CONFIRMED_FINISHED_COL in projects.columns:
+        _add_conf_col()
+    for _, row in projects.iterrows():
+        if not row['is_updated'] or row[_CONFIRMED_FINISHED_COL]: continue
+        indx = row.name
+        github_repo_name = row['repository']
+        gitor_repo_url = row['clone_url']
+        res, stdout, stderr = _check_single_repo(github_repo_name, gitor_repo_url, True)
+        print github_repo_name, res
+        print stdout
+        print '\n'
+        projects.loc[indx, _CONFIRMED_FINISHED_COL] = res
+        projects.to_csv(projects_path, sep='\t')
+        if not res:
+            failures.append((github_repo_name, gitor_repo_url, stdout, stderr))
+    return failures
+
+def get_unfinished_details():
+    unfinished_indxs = [indx for indx,x in enumerate(projects[_CONFIRMED_FINISHED_COL].values) if not x]
+    data = projects.iloc[unfinished_indxs][['repository', 'clone_url']].values
+    with_github_url = [(repo_name, gitor_url, _name_github_url(repo_name)) for repo_name, gitor_url in data]
+    return data
+
+
+def write_unfinished_details():
+    data = get_unfinished_details()
+    outfile = os.path.join(script_dir, 'unfinished_repo_info.txt')
+    np.savetxt(outfile, data, fmt='%s', delimiter='\t')
+    pass
+
+def write_unfinished_logs():
+    unfinished_logdir = os.path.join(_TMP_REPO_DIR, 'logs')
+    if not os.path.exists(unfinished_logdir): os.makedirs(unfinished_logdir)
+    unfinished_indxs = [indx for indx,x in enumerate(projects[_CONFIRMED_FINISHED_COL].values) if not x]
+    for github_repo, gitor_url in projects.iloc[unfinished_indxs][['repository', 'clone_url']].values:
+        print github_repo
+        github_dir_name = os.path.join(os.path.dirname(_TMP_GITHUB_BASE), 'github', github_repo)
+        gitor_dir_name = os.path.join(os.path.dirname(_TMP_GITOR_BASE), 'gitor', github_repo)
+        if not os.path.exists(os.path.dirname(github_dir_name)): os.makedirs(os.path.dirname(github_dir_name))
+        if not os.path.exists(os.path.dirname(gitor_dir_name)): os.makedirs(os.path.dirname(gitor_dir_name))
+        if not os.path.exists(github_dir_name):
+            github_dir = pull_github_repo(github_repo, test_name=True, dirname=github_dir_name)
+        else:
+            github_dir = github_dir_name
+        if not os.path.exists(gitor_dir_name):
+            gitor_dir = pull_gitorious_repo(gitor_url, dirname=gitor_dir_name)
+        else:
+            gitor_dir = gitor_dir_name
+        res, stdout, stderr = _dir_are_same(github_dir, gitor_dir, ret_output=True)
+        with open(os.path.join(unfinished_logdir, github_repo + '.log'), 'w') as logout:
+            logout.write(stdout + '\n')
+    pass
+
+def du(path):
+    return int(subprocess.check_output(['du', '-s', path]).split()[0])
+
+def is_too_big(gitor_repo_dir):
+    size = du(gitor_repo_dir)
+    return float(size) / (1024 * 1024) >= 1
 
 if __name__ == '__main__':
     main()
