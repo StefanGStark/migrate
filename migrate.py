@@ -9,6 +9,8 @@ import shutil
 import shlex
 import datetime
 import stat
+import pdb
+import glob
 
 script_dir = os.path.dirname(os.path.abspath(__file__))
 
@@ -81,7 +83,6 @@ def _write_to_log(msg):
     logfile.write('%s\t%s' %(time(), msg))
     pass
 
-
 def add(gitor_repo_url, github_repo_name, test=False):
     '''Move a gitorios repository to github.
 
@@ -102,11 +103,13 @@ def add(gitor_repo_url, github_repo_name, test=False):
     '''
     tmp_repo_dir = None
     if test: github_repo_name = 'TEST-' + github_repo_name
+    print github_repo_name
     try:
         _write_to_log('Initializing %s\n' %(github_repo_name))
         github_url = init_github_repo(github_repo_name)
         _write_to_log('Pulling %s\n' %(gitor_repo_url))
         tmp_repo_dir = pull_gitorious_repo(gitor_repo_url)
+        fix_large_files_and_symlinks(tmp_repo_dir)
         _write_to_log('Joining %s and %s\n' %(gitor_repo_url, github_url))
         add_github_remote(tmp_repo_dir, github_url)
         _write_to_log('Join successful %s\n' %(gitor_repo_url))
@@ -243,10 +246,61 @@ def push_github_remote(repo_dir, repo_url):
     _write_to_log('\tCOMMAND: ' + push_cmd + '\n')
     pushproc = subprocess.Popen(shlex.split(push_cmd), stdout=pipe, stderr=pipe)
     (stdout, push_stderr) = pushproc.communicate()
+    pdb.set_trace()
     try:
         handle_generic_git_call(pushproc, stdout, push_stderr)
     finally:
         os.chdir(wd)
+    pass
+
+def _find_failed_dirs_wo_symlinks():
+    large_files = dict()
+    symlinks = dict()
+    failed_basedir = '/cluster/project/raetsch/lab/01/home/starks/git_migrate/repo_tmp_dirs/failed_repos'
+    failed_repos = glob.glob(os.path.join(failed_basedir, '*', 'gitor'))
+    for dname in failed_repos:
+        lfs, links = _find_large_files(dname)
+        if len(lfs) > 0:
+            large_files[dname] = lfs
+        if len(links) > 0:
+            symlinks[dname] = links
+    return large_files, symlinks
+
+def find_large_files_and_symlinks(repo_dir):
+    repo_dir = os.path.abspath(repo_dir)
+    size_limit = 50 * 1024 * 1024
+    large_files = list()
+    symlinks = list()
+    for (path, dirs, files) in os.walk(repo_dir):
+        for fname in files:
+            full_path = os.path.join(path, fname)
+            if os.path.islink(full_path):
+                symlinks.append(full_path)
+            elif os.path.getsize(full_path) >= size_limit:
+                large_files.append(full_path)
+    return large_files, symlinks
+
+def fix_large_files_and_symlinks(repo_dir):
+    large_files, symlinks = find_large_files_and_symlinks(repo_dir)
+    if len(symlinks) > 0:
+        raise ValueError('Symlinks found in %s' %repo_dir)
+    if len(large_files) > 0:
+        git_lfs_add(repo_dir, large_files)
+    pass
+
+def git_lfs_add(repo_dir, large_files):
+    cwd = os.getcwd()
+    os.chdir(repo_dir)
+    try:
+        cmd = 'git lfs track %s' %' '.join(large_files)
+        _write_to_log('\tCOMMAND: ' + cmd + '\n')
+        proc = subprocess.Popen(shlex.split(cmd), stdout=pipe, stderr=pipe)
+        (stdout, stderr) = proc.communicate()
+        print cmd
+        print stdout, stderr
+        handle_generic_git_call(proc, stdout, stderr)
+    finally:
+        os.chdir(cwd)
     pass
 
 def get_all_gitdirs(wdir=None):
@@ -257,6 +311,7 @@ def get_all_gitdirs(wdir=None):
     return gitdirs
 
 def _dir_is_empty(dirpath):
+    if not os.path.exists(dirpath): os.makedirs(dirpath)
     contents = os.listdir(dirpath)
     is_empty = len(contents) == 0 or contents[0] == '.git'
     return is_empty
@@ -309,15 +364,26 @@ def project_is_updated(repo_name):
     is_updated = projects.loc[index[0]]['is_updated']
     return is_updated
 
-def list_repos(run_cmd=True):
-    list_cmd = 'curl -u %s:%s https://api.github.com/orgs/%s/repos' %(gituser, _TOKEN, ORG)
-    if run_cmd:
+def _get_num_repo_pages(per_page=100):
+    header_cmd = 'curl -Iu %s:%s https://api.github.com/orgs/%s/repos?per_page=%d' %(gituser, _TOKEN, ORG, per_page)
+    header_proc = subprocess.Popen(shlex.split(header_cmd), stdout=pipe, stderr=pipe)
+    (stdout, stderr) = header_proc.communicate()
+    link_info = [line for line in stdout.splitlines() if line.lower().startswith('link')][0].split()
+    index = [indx for indx, phrase in enumerate(link_info) if phrase == 'rel="last"'][0] - 1
+    page_info = link_info[index]
+    match = re.search('=[0-9]*>;$', page_info)
+    num_pages = int(page_info[match.start(): match.end()][1:-2])
+    return num_pages
+
+def list_repos(per_page=100):
+    data = list()
+    num_pages = _get_num_repo_pages(per_page) + 1
+    for pgnum in range(num_pages):
+        list_cmd = 'curl -u %s:%s https://api.github.com/orgs/%s/repos?per_page=%d&page=%d' %(gituser, _TOKEN, ORG, per_page, pgnum)
         cmd_proc = subprocess.Popen(shlex.split(list_cmd), stdout=pipe, stderr=pipe)
         (stdout, list_stderr) = cmd_proc.communicate()
-        data = json.loads(stdout)
-        return data
-    return list_cmd
-
+        data.extend(json.loads(stdout))
+    return data
 
 class RepositoryExists(Exception):
     def __init__(self, value):
@@ -342,13 +408,19 @@ def _error_flag(result):
 def handle_generic_git_call(proc, stdout=None, stderr=None):
     '''Handle the output of a git command, e.g. git pull ...
     '''
-    if proc.returncode < 0:
+    error_flag = False
+    if (stderr is not None and len(stderr) > 0) or (stdout is not None and len(stdout) > 0):
+        print "stderr: %s" %stderr
+        print "stdout: %s" %stdout
+    if stderr is not None and ('is not a git command' in stderr or stderr.startswith('Invalid')):
+        error_flag = True
+    if proc.returncode < 0 or error_flag:
         msg = 'git command failed'
-        if stdout is not None:
+        if stdout is not None and len(stdout) > 0:
             msg = msg + '\nstdout: %s' %stdout
-        if stderr is not None:
+        if stderr is not None and len(stderr) > 0:
             msg = msg + '\nstderr: %s' %stderr
-        raise ValueError('git command failed')
+        raise ValueError(msg)
     pass
 
 def handle_git_init_response(github_url, proc, stdout, stderr=None):
@@ -370,9 +442,10 @@ def handle_git_init_response(github_url, proc, stdout, stderr=None):
             if not github_repo_is_empty(github_url):
                 raise RepositryExists(github_url)
             else:
-                _write_to_log('repository was initialized, but was empty\n') 
+                _write_to_log('repository was initialized, but was empty\n')
         else:
             raise ValueError(result)
+    pdb.set_trace()
     pass
 
 def gitor_and_github_are_same(gitor_tmp_dir, github_repo_name):
@@ -403,14 +476,18 @@ def _add_conf_col():
     projects[_CONFIRMED_FINISHED_COL] = pd.Series(None, index=projects.index)
     pass
 
-def _check_single_repo(github_repo_name, gitor_repo_url, ret_diff_output=True):
+def _check_single_repo(github_repo_name, gitor_repo_url, debug=False):
     try:
         github_dir = pull_github_repo(github_repo_name, test_name=True)
         gitor_dir = pull_gitorious_repo(gitor_repo_url)
         res = _dir_are_same(github_dir, gitor_dir, ret_output=True)
+        if debug:
+            print github_dir
+            print gitor_dir
     finally:
-        del_rw(github_dir)
-        del_rw(gitor_dir)
+        if not debug:
+            del_rw(github_dir)
+            del_rw(gitor_dir)
     return res
 
 def get_repo_info(index=None):
@@ -421,22 +498,32 @@ def get_repo_info(index=None):
     return github_repo_name, gitor_repo_url
 
 def check_results():
+    failed_repo_dir = '/cluster/project/raetsch/lab/01/home/starks/git_migrate/repo_tmp_dirs/failed_repos'
+    if not os.path.exists(failed_repo_dir): os.makedirs(failed_repo_dir)
     failures = list()
     if not _CONFIRMED_FINISHED_COL in projects.columns:
         _add_conf_col()
     for _, row in projects.iterrows():
+        if not row['repository'] == 'projects2014-wordreps': continue
+        print row['repository']
         if not row['is_updated'] or row[_CONFIRMED_FINISHED_COL]: continue
         indx = row.name
         github_repo_name = row['repository']
         gitor_repo_url = row['clone_url']
         res, stdout, stderr = _check_single_repo(github_repo_name, gitor_repo_url, True)
         print github_repo_name, res
+        print "gitor repo url: %s" %gitor_repo_url
         print stdout
         print '\n'
         projects.loc[indx, _CONFIRMED_FINISHED_COL] = res
         projects.to_csv(projects_path, sep='\t')
         if not res:
             failures.append((github_repo_name, gitor_repo_url, stdout, stderr))
+            basedir = os.path.join(failed_repo_dir, github_repo_name)
+            github_dir =  os.path.join(basedir, 'github')
+            gitor_dir =  os.path.join(basedir, 'gitor')
+            if not os.path.exists(github_dir): pull_github_repo(github_repo_name, test_name=True, dirname=github_dir)
+            if not os.path.exists(gitor_dir): pull_gitorious_repo(gitor_repo_url, dirname=gitor_dir)
     return failures
 
 def get_unfinished_details():
