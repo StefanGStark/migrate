@@ -527,16 +527,33 @@ def check_results():
     return failures
 
 def get_unfinished_details():
+    failed_repo_pdir = '/cluster/project/raetsch/lab/01/home/starks/git_migrate/repo_tmp_dirs/failed_repos'
     unfinished_indxs = [indx for indx,x in enumerate(projects[_CONFIRMED_FINISHED_COL].values) if not x]
-    data = projects.iloc[unfinished_indxs][['repository', 'clone_url']].values
-    with_github_url = [(repo_name, gitor_url, _name_github_url(repo_name)) for repo_name, gitor_url in data]
+    data = projects.iloc[unfinished_indxs][['repository', 'clone_url']]
+    data.columns = ['repository_name', 'gitor_URL']
+    has_large_file = np.zeros(data.shape[0], dtype=bool)
+    has_symlink = np.zeros(data.shape[0], dtype=bool)
+    for index, (repo_name, url) in enumerate(data.values):
+        repo_dir = os.path.join(failed_repo_pdir, repo_name)
+        if os.path.exists(repo_dir):
+            large_files, symlinks = find_large_files_and_symlinks(repo_dir)
+        else:
+            try:
+                repo_dir = pull_gitorious_repo(url)
+                large_files, symlinks = find_large_files_and_symlinks(repo_dir)
+            finally:
+                del_rw(repo_dir)
+        if len(large_files) > 0: has_large_file[index] = True
+        if len(symlinks) > 0: has_symlink[index] = True
+    data['has_large_file'] = pd.Series(has_large_file, index=data.index)
+    data['has_symlink'] = pd.Series(has_symlink, index=data.index)
     return data
 
 
 def write_unfinished_details():
     data = get_unfinished_details()
-    outfile = os.path.join(script_dir, 'unfinished_repo_info.txt')
-    np.savetxt(outfile, data, fmt='%s', delimiter='\t')
+    outpath = os.path.join(script_dir, 'unfinished_repo_info.txt')
+    data.to_csv(outpath, sep='\t', index=False)
     pass
 
 def write_unfinished_logs():
